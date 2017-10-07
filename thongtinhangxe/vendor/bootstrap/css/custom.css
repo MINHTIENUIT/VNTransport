@@ -1,0 +1,44 @@
+.span3
+{
+	padding-right: 33px;
+  padding-left: 33px;
+  padding-top: 33px;
+
+}
+
+
+.col-xs-4 
+{
+    width: 33.33333333%;
+}
+
+.logo
+{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.btn-large
+{
+	font-size: 200%;
+	border-style: solid;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-width: 0px;
+  background-color:  #1512ba;
+  border-color: #1512ba;
+  margin: 10px;
+  color: white;
+}
+
+img {
+    display: inline-block;
+}
+
+.btn-large:hover{
+	text-decoration: none;
+	background-color: #0800ff;
+	color: white;
+}
+
