@@ -4,7 +4,7 @@
 	padding-left: 3px;
 	border: none;
 	border-radius: 10px;
-	background-image: url(http://www.iconsfind.com/wp-content/uploads/2017/05/20170525_592661ad3138f.png);
+	background-image: url(../images/location.png);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 	background-position: right;
@@ -17,7 +17,7 @@
 	border: none;
 	padding-left: 3px;
 	border-radius: 10px;
-	background-image: url(http://www.iconsfind.com/wp-content/uploads/2017/05/20170525_592661ad3138f.png);
+	background-image: url(../images/location.png);
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 	background-position: right;
@@ -38,12 +38,27 @@ input.submit{
 	height: 40px;
 	border-radius: 10px;
 	border: none;
-	background-color: #FFB91E;
+	background-color: #307F3B;
 	outline: none;
 }
 
 input.submit:hover{
-	content: "adfadf";
-	background-color: yellow;
+	background-color: #08AA18;
 
+}
+
+#background{
+	margin-bottom: 16px;
+  background: radial-gradient(circle at 98% 98%,#006be0,#3194ff);
+  background-image: radial-gradient(circle at 98% 98%, rgb(0, 107, 224), rgb(49, 148, 255));
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }

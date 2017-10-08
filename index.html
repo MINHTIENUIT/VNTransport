@@ -27,7 +27,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse" style="background-color: #1867AA; margin-bottom: 0px">
+	<nav class="navbar navbar-inverse" id="background" style="margin-bottom: 0px; border-radius: 0px;">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -54,19 +54,19 @@
 		</div><!-- /.navbar-collapse -->
 	</div>
 </nav>
-<div class="container-fluid" style="background-image: url(images/image_background.jpg); min-height: 300px;">
+<div class="container-fluid" style="background-image: url(images/image_background.jpg);  min-height: 250px;">
 	<div style="text-align: center; padding-top: 50px;">
-		<div class="container col-md-6 col-xs-12" style="text-align: center; padding: 20px;">
+		<div class="container col-md-6 col-xs-12" style="padding: 20px;">
 			<input id="start_text" type="text" name="start" placeholder="Nhập nơi đi">
 		</div>
-		<div class="container col-md-6 col-xs-12" style="text-align: center; padding: 20px;">
+		<div class="container col-md-6 col-xs-12" style="float: left; center; padding: 20px;">
 			<input id="des_text" type="text" name="des" placeholder="Nhập nơi đến">
 		</div>
 		<div class="container col-md-6 col-xs-12" style="text-align: center; padding: 20px;">
 			<input id="date" type="date" name="date">
 		</div>
 		<div class="container col-md-6 col-xs-12" style="text-align: center; padding: 20px;">
-			<input class="submit" type="submit" name="find" value="Tìm Kiếm">
+			<input style="color: white;" class="submit" type="submit" name="find" value="Tìm Kiếm">
 		</div>
 	</div>
 </div>
@@ -113,7 +113,7 @@
 	</div>
 </div>
 
-<div class="container-fluid col-md-8 col-md-offset-2 col-xs-12" style="margin-top: 50px;">
+<div class="container col-md-8 col-md-offset-2 col-xs-12" style="margin-top: 50px;">
 	<h3 style="text-align: center;">Hãng Xe Khách Chất Lượng</h3>
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
@@ -154,6 +154,14 @@
 			<span class="glyphicon glyphicon-chevron-right"></span>
 		</a>
 	</div>
+</div>
+
+<div class="col-md-12 col-xs-12" id="background" style="background-color: #212529; color: white; text-align: center;">
+		<h3>Vì một hành trình an toàn</h3>
+		<div style="text-align: center;">
+			Văn Minh Tiến 		--		 Bùi Hữu Phước 		--		Huỳnh Hữu Lợi
+		</div>
+		Hotline: 0909090909
 </div>
 
 </body>
