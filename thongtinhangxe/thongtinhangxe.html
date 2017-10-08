@@ -11,10 +11,11 @@
     <title>Tra Cứu Vé Xe</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/bootstrap/css/custom.css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT:700" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" >
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/pricetable.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <!-- Custom styles for this template -->
     <style>
@@ -35,7 +36,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="border-style: solid; border-radius: 5px; border: 0px; background-color: #1867AA">
       <div class="container">
         <a class="navbar-brand" href="#">Tra Cứu Vé Xe</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,13 +50,16 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Khuyến Mãi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Dịch Vụ</a>
+              <a class="nav-link" href="#">Tin Tức</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Liên Hệ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Đăng Nhập</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Đăng Ký</a>
             </li>
           </ul>
         </div>
@@ -64,13 +68,16 @@
 
     <!-- Page Content -->
     <div class="span3">
-          <div class="well">
-            <div class="col-xs-4 col-md-4">
-              <img class="logo" src="img/logo-hl.png" style="width: 100%" align="left">
-            </div>
-            <div class="col-xs-8" style="margin: 15px;">
-              <h1 class="text-info" style="margin: auto;">Thông tin về nhà xe</h1>
-              <div class="row infomation" style="font-size: 150%">
+          <div class="col-12">
+            <h2 class="text-info" align="middle">Thông tin xe</h2>
+          </div>
+
+          <div class="col-sm-4">
+            <img class="logo col-12" src="img/logo-hl.png" style="margin: auto; margin-top: 50px;" align="left">
+          </div>
+                           
+                <div class="row infomation col-sm-8" style="font-size: 150%">
+
               	<hr>
                 <div class="col-xs-4 col-md-3">Tên nhà xe:</div>
                 <div class="col-xs-8 col-md-9">Hoàng Long</div>
@@ -82,49 +89,48 @@
                 <hr>
 
                 <hr>
-                <div class="col-xs-4 col-md-3">Dịch vụ:</div>
-                <div class="col-xs-8 col-md-9">Vận tải đường bộ</div>
+                <div class="col-xs-4 col-md-3">Địa chỉ:</div>
+                <div class="col-xs-8 col-md-9">05 Phạm Ngũ Lão, Phường Lương Khánh Thiện, Ngô Quyền, TP. Hải Phòng</div>
                 <hr>
 
                 <hr>
                 <div class="col-xs-4 col-md-3" style="margin-top: 15px;">Đánh giá:</div>             
 
-<div class="stars">
+                <div class="stars">
 
-  <form action="">
+                  <form action="">
 
-    <input class="star star-5" id="star-5" type="radio" name="star"/>
+                    <input class="star star-5" id="star-5" type="radio" name="star"/>
 
-    <label class="star star-5" for="star-5"></label>
+                    <label class="star star-5" for="star-5"></label>
 
-    <input class="star star-4" id="star-4" type="radio" name="star"/>
+                    <input class="star star-4" id="star-4" type="radio" name="star"/>
 
-    <label class="star star-4" for="star-4"></label>
+                    <label class="star star-4" for="star-4"></label>
 
-    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                    <input class="star star-3" id="star-3" type="radio" name="star"/>
 
-    <label class="star star-3" for="star-3"></label>
+                    <label class="star star-3" for="star-3"></label>
 
-    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                    <input class="star star-2" id="star-2" type="radio" name="star"/>
 
-    <label class="star star-2" for="star-2"></label>
+                    <label class="star star-2" for="star-2"></label>
 
-    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                    <input class="star star-1" id="star-1" type="radio" name="star"/>
 
-    <label class="star star-1" for="star-1"></label>
+                    <label class="star star-1" for="star-1"></label>
 
-  </form>
+                  </form>
 
-</div>
-
+                </div>
 <hr>
 
               </div>               
-            </div>
             
             <hr>
 
-            <h1 align="middle">Một số hình ảnh</h1>     
+            <h3 align="middle">Một số hình ảnh</h3>     
+
 
 		<div class="row" style="margin: auto;">
 		  <div class="column">
@@ -142,7 +148,7 @@
 		</div>
 
 		<div id="myModal" class="modal">
-		  <span class="close cursor" onclick="closeModal()" style="font-size: 3rem; color: white;">&times;</span>
+		  <span class="close cursor" onclick="closeModal()">&times;</span>
 		  <div class="modal-content" >
 
 		    <div class="mySlides">
@@ -190,24 +196,101 @@
 
 
 
-<script src="vendor/transport.js"></script>
+
 <hr>                  
 		<hr>
-			<h1 align="middle">Giới thiệu</h1>
+			<h3 align="middle">Thông tin</h3>
             <div class="col-11" style="margin: auto; font-size: 150%;">Hãng xe Hoàng Long hay còn gọi là Hoàng Long Asia hoặc Hoàng Long Bus là một trong những thương hiệu xe chất lượng cao hàng đầu Việt Nam. Phục vụ hàng chục triệu hành khách Việt Nam và quốc tế trong suốt 16 năm hoạt động, xe khách Hoàng Long đã đạt giải thưởng Sao Vàng đất Việt 3 lần liên tiếp. Xe giường nằm cao cấp Hoàng Long liên tục cải tiến với rất nhiều tiện ích như TV, máy lạnh, khăn lạnh, nhà vệ sinh,... giúp hành khách trên xe luôn cảm giác thoải mái. Tất cả các lái phụ xe của nhà xe Hoàng Long đều được học giao tiếp du lịch để luôn đối xử ân cần và lịch sự đối với hành khách. Nhờ những cố gắng không ngừng, danh tiếng của Hoàng Long lan rộng khắp Việt Nam và quốc tế. Hoàng Long - Không ngừng đổi mới, không ngừng nâng cao chất lượng phục vụ.</div>
 		<hr>              
             <hr>
-            <h1>Giá vé:</h1>
 
-            <hr>
+            <div class="container">
+          <div class="row">      
+      <div class="col-md-12">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title">Bảng Giá</h3>
+            <div class="pull-right">
+              <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                <i class="glyphicon glyphicon-filter"></i>
+              </span>
             </div>
+          </div>
+          <div class="panel-body">
+            <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Lọc kết quả" />
+          </div>
+          <table class="table table-hover" id="task-table">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Tuyến Đường</th>
+                <th>Loại xe</th>
+                <th>Số chuyến</th>
+                <th>Giá vé</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Hà Nội đi Ngô Quyền</td>
+                <td>VIP Limousine 9 chỗ</td>
+                <td>25 chuyến/ngày</td>
+                <td>160.000₫</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Lê Chân đi Hà Nội </td>
+                <td>Ghế ngồi 45 chỗ</td>
+                <td>18 chuyến/ngày</td>
+                <td>90.000₫</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Sài Gòn đi Cẩm Phả</td>
+                <td>Giường nằm 39 chỗ</td>
+                <td>2 chuyến/ngày</td>
+                <td>920.000₫</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Hà Nội đi Cát Bà</td>
+                <td>Ghế ngồi 45 chỗ</td>
+                <td>2 chuyến/ngày</td>
+                <td>220.000₫</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Cát Bà đi Hà Nội</td>
+                <td>Ghế ngồi 45 chỗ</td>
+                <td>2 chuyến/ngày</td>
+                <td>200.000₫</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Lê Chân đi Sài Gòn</td>
+                <td>Giường nằm 39 chỗ</td>
+                <td>2 chuyến/ngày</td>
+                <td>780.000₫</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
+    </div>
+  </div>
+<hr>
+
+
+
+  </div>
+</div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
+    <script src="vendor/bootstrap/js/pricetable.js"></script>
+    <script src="vendor/bootstrap/js/transport.js"></script>
   </body>
 
 </html>
