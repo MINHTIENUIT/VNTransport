@@ -14,7 +14,9 @@
 	<!-- fontawesome.io -->
 	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
 
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
 </head>
 <body>
 	
@@ -60,44 +62,49 @@
 			<!-- Search Form -->
 			<form class="bootstrap-frm">
 				<div class="row">
-					<div class="col-12 div-center">
-						<i class="fa fa-car fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
-						<input id="" type="text" placeholder="Noi di" />
+					<div class="col-md-6 div-right">
+						<i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
+						<input id="" type="text" placeholder="Nhap noi di" />
 					</div>	
-				</div>
-				
-				<div class="row"> 
-					<div class="col-12 div-center">
-						<i class="fa fa-car fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
-						<input id="" type="text" placeholder="Noi di" />
+
+					<div class="col-md-6 div-right">
+						<i class="fa fa-arrow-right fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
+						<input id="" type="text" placeholder="Nhap noi den" />
 					</div>	
 				</div>
 
 				<div class="row div-center">
-					<label>
-						<input type="button" class="button" value="Tim kiem" /> 
-					</label>
-				</div> 
-			</form>
-			<!-- Search Form End -->
+					<div class="col-md-6 div-right">
+						<i class="fa fa-calendar-o fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
+						<input class="form-control" id="date" name="date" placeholder="Chon mot ngay" type="text"/>
+					</div>
 
-		</div>
-	</main>
+					<div class="col-md-6 div-right"><button type="button" class="btn btn-default button" aria-label="Left Align" style="margin-left: 64px;">
+						Tim ve xe
+						<span class="fa fa-car" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div> 
+		</form>
+		<!-- Search Form End -->
 
-	<!-- Footer -->
-	<footer class="bd-footer text-muted">
-		<div class="container">
-			<ul class="bd-footer-links">
-				<li><a href="#">GitHub</a></li>
-				<li><a href="#">Facebook</a></li>
-				<li><a href="#">About</a></li>
-			</ul>
+	</div>
+</main>
 
-			<p></p>
-			<p></p>
-		</div>
-	</footer>
-	<!-- Footer End -->
+<!-- Footer -->
+<footer class="bd-footer text-muted">
+	<div class="container">
+		<ul class="bd-footer-links">
+			<li><a href="#">GitHub</a></li>
+			<li><a href="#">Facebook</a></li>
+			<li><a href="#">About</a></li>
+		</ul>
+
+		<p></p>
+		<p></p>
+	</div>
+</footer>
+<!-- Footer End -->
 
     <!-- Bootstrap core JavaScript
     	================================================== -->
@@ -108,5 +115,26 @@
     	<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
     	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-    </body>
-</html>
+
+    	<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+    	<!-- Include jQuery -->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    	<!-- Include Date Range Picker -->
+    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    	<script>
+    		$(document).ready(function(){
+				var date_input=$('input[name="date"]'); //our date input has the name "date"
+				var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+				date_input.datepicker({
+					format: 'dd/mm/yyyy',
+					container: container,
+					todayHighlight: true,
+					autoclose: true,
+				})
+			})
+		</script>
+
+	</body>
+	</html>
