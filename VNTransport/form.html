@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VNTransport</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/docs.min.css">
+
+	<!-- Custom styles for this template -->
+	<link href="css/navbar.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style_form.css">
+
+	<!-- fontawesome.io -->
+	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+
+</head>
+<body>
+	
+	<!-- Navigation Bar -->
+	<header class="navbar navbar-light navbar-toggleable-md bd-navbar" style="margin-bottom: 0px">
+		<nav class="container w-100">
+
+			<div class="d-flex justify-content-between hidden-lg-up">
+				<a class="navbar-brand" href="/">
+					VNTransport
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bd-main-nav">
+				<ul class="nav navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-item nav-link active" href="#" onclick="">Trang Chủ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link " href="#" onclick="">Tin Tức</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link " href="#" onclick="">Liên Hệ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link" href="#" onclick="">Đăng Nhập</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link" href="#" onclick="">Đăng Kí</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- Navigation Bar End -->
+
+	<main id="content" style="padding: 48px">
+		<div class="row">
+			<div class="container">
+				<h3 style="text-align: center; padding-bottom: 20px;">Đăng Kí</h3>
+			</div>
+			<!-- Form đăng kí thông tin hãng xe -->
+			<div class="col-md-6 col-mx-12" style="">			
+				<form action="" method="post" class="bootstrap-form">
+					<h1 style="text-align: center;">
+						<span>Thông Tin Hãng Xe</span>
+					</h1>
+					<label>
+						<span>Hãng xe: </span>
+						<input id="name_hx" type="text" name="name_hx" placeholder="Nhập tên hãng xe" />
+					</label>
+					<label>
+						<span>Chủ Xe: </span>
+						<input id="name_cx" type="text" name="name_cx" placeholder="Nhập tên chủ xe" />
+					</label>
+					<label>
+						<span>Email: </span>
+						<input id="email" type="email" name="email" placeholder="Email hãng xe" />
+					</label>
+					<label>
+						<span>Điện Thoại: </span>
+						<input id="phone" type="tel" name="phone" placeholder="Điện Thoại" />
+					</label>
+					<label>
+						<span>Giới Thiệu :</span>
+						<textarea id="info" name="message" placeholder="Thông tin nhà xe"></textarea>
+					</label>
+					<div class="div-center">
+						<span>&nbsp;</span>
+						<input type="button" class="button" value="Đăng kí" />
+					</div>
+				</form>
+			</div>
+			<!-- Form đăng kí thông tin chuyến đi -->
+			<div class="col-md-6 col-mx-12">
+				<form action="" method="post" class="bootstrap-form">
+					<h1 style="text-align: center;">
+						<span>Thông Tin Tuyến đi</span>
+					</h1>
+					<label>
+						<span>Nơi đi: </span>
+						<div>
+							<input id="start" name="end" placeholder="Chon nơi đi" type="text"/>
+						</div>
+						<span>
+							Nơi đến:
+						</span>
+						<div>
+							<input id="end" name="end" placeholder="Chon nơi đến" type="text"/>
+						</div>
+					</label>
+					<label>
+						<span>Giờ Đi: </span>
+						<input id="hour" type="time" name="hour" placeholder="Chọn giờ đi" />
+					</label>
+					<label>
+						<span>Giá vé: </span>
+						<input id="cost" type="number" name="cost" placeholder="Giá vé VNĐ" />
+					</label>
+					<label>
+						<span>Dịch vụ:</span>
+						<textarea id="info" name="message" placeholder=""></textarea>
+					</label>
+					<div class="div-center">
+						<span>&nbsp;</span>
+						<input type="button" class="button" value="Lưu" />
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="bd-footer text-muted">
+		<div class="container">
+			<ul class="bd-footer-links">
+				<li><a href="#">GitHub</a></li>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">About</a></li>
+			</ul>
+
+			<p></p>
+			<p></p>
+		</div>
+	</footer>
+	<!-- Footer End -->
+
+    <!-- Bootstrap core JavaScript
+    	================================================== -->
+    	<!-- Placed at the end of the document so the pages load faster -->
+    	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    	<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    	<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+    	<!-- Include jQuery -->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</body>
+</html>
