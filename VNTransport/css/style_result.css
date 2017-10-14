@@ -1,0 +1,8 @@
+.background{
+	background-image: -webkit-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+	background-image: -o-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+	background-image: linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+}
+div.list{
+	border:1px solid #DDD;
+}

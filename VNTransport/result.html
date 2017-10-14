@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VNTransport</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/docs.min.css">
+
+	<!-- Custom styles for this template -->
+	<link href="css/navbar.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style_result.css">
+
+	<!-- fontawesome.io -->
+	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+	<!-- DatePicker -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
+	<!-- Include rating-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/ratingstat.css">
+
+</head>
+<body>
+	
+	<!-- Navigation Bar -->
+	<header class="navbar navbar-light navbar-toggleable-md bd-navbar" style="margin-bottom: 0px">
+		<nav class="container w-100">
+
+			<div class="d-flex justify-content-between hidden-lg-up">
+				<a class="navbar-brand" href="/">
+					VNTransport
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bd-main-nav">
+				<ul class="nav navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-item nav-link active" href="#" onclick="">Trang Chủ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link " href="#" onclick="">Tin Tức</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link " href="#" onclick="">Liên Hệ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link" href="#" onclick="">Đăng Nhập</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link" href="#" onclick="">Đăng Kí</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- Navigation Bar End -->
+
+	<main class="" id="content" style="padding: 48px;">
+		<div>
+			<form class="bootstrap-frm background">
+				<div class="row div-center">
+
+					<div class="col-md-3 div-center" style="padding: 8px;">
+						<i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: #fff; margin-right: 3px;"></i>
+						<input id="" type="text" placeholder="Nhap noi di" />
+					</div>	
+
+					<div class="col-md-3 div-center" style="padding: 8px;">
+						<i class="fa fa-arrow-right fa-2x" aria-hidden="true" style="color: #fff; margin-right: 3px;"></i>
+						<input id="" type="text" placeholder="Nhap noi den" />
+					</div>	
+
+
+					<div class="col-md-3 div-center" style="padding: 8px;">
+						<i class="fa fa-calendar-o fa-2x" aria-hidden="true" style="color: #fff;margin-right: 3px;"></i>
+						<input class="form-control" id="date" name="date" placeholder="Chon mot ngay" type="text"/>
+					</div>
+
+					<div class="col-md-3 div-center" style="padding: 8px;">
+						<button type="button" class="btn btn-default button" aria-label="Left Align" style="margin-left: 64px;">
+							Tim ve xe
+							<span class="fa fa-car" aria-hidden="true"></span>
+						</button>
+					</div>
+				</div> 
+			</form>
+		</div>
+
+		<!--Bar short-->
+		<div class="container-fluid row" style="background-color: #EFEFEF; margin: 8px;">		
+			<div class="row col-md-6 div-center" style="text-align: center;">
+				<div class="div-center col-md-4">
+					<span><h3>Hà Nội</h3></span>
+				</div>
+				<div class="div-center col-md-3">
+					<i class="fa fa-exchange"></i>
+				</div>
+				<div class="div-center col-md-5">
+					<span class=""><h3>Hồ Chí Minh</h3></span>
+				</div>
+			</div>
+			<div class="row div-center col-md-6">
+				<div class="div-center col-xs-6" style="padding: 8px;">
+					Giờ đi:
+					<select>
+						<option>Không</option>
+						<option>Tăng dần</option>
+						<option>Giảm dần</option>
+					</select>					
+				</div>		
+				<div class="div-center col-xs-6" style="padding: 8px;">
+					Giá vé:
+					<select>
+						<option>Không</option>
+						<option>Tăng dần</option>
+						<option>Giảm dần</option>
+					</select>
+				</div>	
+				<div class="div-center col-xs-12" style="padding: 8px;">
+					Đánh giá:
+					<select>
+						<option>Không</option>
+						<option>Tăng dần</option>
+						<option>Giảm dần</option>
+					</select>
+				</div>	
+			</div>					
+		</div>
+		<!-- List Result -->
+		<div>
+			<!--Col 1 -->
+			<div class="container-fluid row border list">
+				<div class="col-md-2 div-center" style="text-align: center;">
+					<h2>Mai Linh</h2>
+				</div>
+				<div class="col-md-2 div-center" style="text-align: center; vertical-align: middle;">
+					<span>
+						<h4><strong>14h30</strong></h4>
+						<p>Hà Nội</p>
+					</span>			
+				</div>
+				<div class="col-md-2 div-center" style="text-align: center;">
+					<span>				
+						<p>Giường nằm 40 chỗ</p>
+						<p>Wifi-free</p>	
+					</span>
+
+				</div>
+				<div class="col-md-2" style="text-align: center;">
+					<div>
+						<p><strong>Đánh Giá</strong></p>
+					</div>
+					<div>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Col 2-->
+
+			<div class="container-fluid row border list">
+				<div class="col-md-2 div-center" style="text-align: center;">
+					<h2>Phương Trang</h2>
+				</div>
+				<div class="col-md-2 div-center" style="text-align: center;">
+					<span>
+						<h4><strong>14h30</strong></h4>
+						<p>Hồ Chí Minh</p>
+					</span>			
+				</div>
+				<div class="col-md-2 div-center" style="text-align: center;">
+					<span>				
+						<p>Giường nằm 40 chỗ</p>
+						<p>Wifi-free</p>	
+					</span>
+
+				</div>
+				<div class="col-md-2" style="text-align: center;">
+					<div>
+						<p><strong>Đánh Giá</strong></p>
+					</div>
+					<div>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- Footer -->
+	<footer class="bd-footer text-muted">
+		<div class="container">
+			<ul class="bd-footer-links">
+				<li><a href="#">GitHub</a></li>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">About</a></li>
+			</ul>
+
+			<p></p>
+			<p></p>
+		</div>
+	</footer>
+	<!-- Footer End -->
+
+    <!-- Bootstrap core JavaScript
+    	================================================== -->
+    	<!-- Placed at the end of the document so the pages load faster -->
+    	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    	<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    	<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+    	<!-- Include jQuery -->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    	<!-- Include DatePicker -->
+    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    	<script>
+    		$(document).ready(function(){
+				var date_input=$('input[name="date"]'); //our date input has the name "date"
+				var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+				date_input.datepicker({
+					format: 'dd/mm/yyyy',
+					container: container,
+					todayHighlight: true,
+					autoclose: true,
+				})
+			})
+		</script>
+
+	</body>
+	</html>
