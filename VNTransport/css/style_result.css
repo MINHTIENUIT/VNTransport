@@ -6,3 +6,34 @@
 div.list{
 	border:1px solid #DDD;
 }
+
+table{
+	border:1px solid #DDD;
+}
+
+tr{
+	border:1px solid #DDD;
+}
+
+td{
+	padding:  15px;
+}
+
+th{
+	vertical-align: middle;
+	text-align: center;
+	margin: 10px
+}
+
+#carousel-line{
+	text-align: center;
+}
+
+#unline_a{
+	text-decoration: none;
+	color: black;
+}
+
+#unline_a:hover{
+	color: green;
+}
