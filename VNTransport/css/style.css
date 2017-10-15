@@ -124,11 +124,54 @@ body {
 	padding: 10px 25px 10px 25px;
 	color: #fff;
 	border-radius: 4px;
-	font-family: 'Montserrat', sans-serif;
 } 
+
 .bootstrap-frm .button:hover {
 	color: #fff;
 	background-color: #007F00;
 	border-color: #007F00;
 }
 /* Search form style End */
+
+
+/* Container holding the image and the text */
+.image-container {
+    text-align: center;
+    color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+/* Top right text */
+.top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

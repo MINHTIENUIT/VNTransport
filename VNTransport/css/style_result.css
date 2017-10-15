@@ -1,0 +1,39 @@
+.background{
+	background-image: -webkit-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+	background-image: -o-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+	background-image: linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+}
+div.list{
+	border:1px solid #DDD;
+}
+
+table{
+	border:1px solid #DDD;
+}
+
+tr{
+	border:1px solid #DDD;
+}
+
+td{
+	padding:  15px;
+}
+
+th{
+	vertical-align: middle;
+	text-align: center;
+	margin: 10px
+}
+
+#carousel-line{
+	text-align: center;
+}
+
+#unline_a{
+	text-decoration: none;
+	color: black;
+}
+
+#unline_a:hover{
+	color: green;
+}
