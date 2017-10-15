@@ -5,83 +5,131 @@
 
 	<meta charset="UTF-8">
 
-	<!-- Bootstrap core CSS -->
-	<link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/docs.min.css">
-
-	<!-- Custom styles for this template -->
-	<link href="css/navbar.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.css">
-
-	<!-- fontawesome.io -->
-	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
-
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="mdb/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="mdb/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="mdb/css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+    	
+		.navbar.navbar-light .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
+    		background-color: rgba(0,0,0,0);
+    		font-weight: bold;
+		}
+		.bd-masthead {
+			padding: 8rem 4rem 4rem 4rem;
+			text-align: center;
+			background-image: -webkit-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+			background-image: -o-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+			background-image: linear-gradient(135deg,#00567F,#26637F,#00ADFF);
+		}
+
+		.div-center{
+			display:flex;
+			justify-content:center;
+			align-items:center;
+		}
+
+		.div-right{
+			display:flex;
+			justify-content:
+			flex-end;
+			align-items:center;
+		}
+
+		.bd-footer a {
+			font-weight: 500;
+			color: white;
+		}
+		.bd-footer{
+			bottom:0;
+			width:100%;
+			height:auto;   /* Height of the footer */
+			background-color: #26637F;
+			height: 50px;
+			left: 0px;
+			right: 0px;
+			margin-bottom: 0px;
+		}
+
+		.text-muted {
+			color: white!important;
+		}
+
+		body{
+			min-width: 400px;
+		}
+
+		.border {
+			border-color: #fff;
+			border-radius: 8px;
+			border-style: solid;
+			padding: 8px;
+		}
+
+    </style>
+</head>
 </head>
 <body>
 	
 	<!-- Navigation Bar -->
-	<header class="navbar navbar-light navbar-toggleable-md bd-navbar" style="margin-bottom: 0px">
-		<nav class="container w-100">
+<header>
 
-			<div class="d-flex justify-content-between">
-				<a class="navbar-brand" href="/">
-					VNTransport
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white scrolling-navbar">
+        <a class="navbar-brand" href="#"><strong>VNTransport</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Trang chủ<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tin tức</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Liên hệ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Đăng kí</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-			<div class="collapse navbar-collapse" id="bd-main-nav">
-				<ul class="nav navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-item nav-link active" href="#" onclick="">Trang chủ</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-item nav-link " href="#" onclick="">Tin tức</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-item nav-link " href="#" onclick="">Liên hệ</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-item nav-link" href="#" onclick="">Đăng nhập</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-item nav-link" href="#" onclick="">Đăng kí</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
+</header>
 	<!-- Navigation Bar End -->
 
-	<main class="bd-masthead" id="content" style="padding: 48px">
+	<main class="bd-masthead">
 		<div class="container">
 
 			<!-- Search Form -->
-			<form class="bootstrap-frm">
+			<form class="md-form" style="border-style: 1px solid;">
 				<div class="row">
 					<div class="col-md-6 div-right">
-						<i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
-						<input id="" type="text" placeholder="Nhập nơi đi" />
+						<i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: #fff; padding: 21px"></i>
+						<input type="text" class="input-alternate" style="background-color: #fff; border-radius: 8px; padding:4px;" placeholder="Nhập nơi đi">
 					</div>	
 
 					<div class="col-md-6 div-right">
 						<i class="fa fa-arrow-right fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
-						<input id="" type="text" placeholder="Nhập nơi đến" />
+						<input type="text" class="input-alternate" style="background-color: #fff; border-radius: 8px; padding:4px;" placeholder="Nhập nơi đến">
 					</div>	
 				</div>
 
 				<div class="row div-center">
 					<div class="col-md-6 div-right">
 						<i class="fa fa-calendar-o fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
-						<input class="form-control" id="date" name="date" placeholder="Chọn ngày đi" type="text"/>
+						<input class="form-control input-alternate datepicker" id="date" name="date" style="background-color: #fff; border-radius: 8px; padding:4px; margin-bottom: 0px;" placeholder="Chọn ngày đi" type="text"/>
 					</div>
 
-					<div class="col-md-6 div-right"><button type="button" class="btn btn-default button" aria-label="Left Align" style="margin-left: 64px;">
+					<div class="col-md-6 div-right"><button type="button" class="btn btn-dark-green" aria-label="Left Align" style="margin-left: 64px; margin-right: 0px; border-radius: 8px;">
 						Tìm vé xe 
 						<span class="fa fa-car" aria-hidden="true"></span>
 					</button>
@@ -95,91 +143,109 @@
 
 <div class="bd-featurette">
 	<div class="container">
-		<h3><b>Địa điểm du lịch</b></h3>
+		<h3 style="margin-top: 24px"><b>Địa điểm du lịch</b></h3>
 		<hr>
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-				<a href="#" class="d-block mb-4 h-100 imgage-container">
-					<div class="centered">
-						<h5 style="color: #fff; background-color: black; opacity:0.6; filter:alpha(opacity=60); padding: 8px; border: 1px solid #cdbfe3; border-radius: 8px">Hồ Chí Minh</h4>
-					</div>
-					<img class="img-fluid img-thumbnail" src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/HCM.jpg" alt="">
-				</img>
-			</a>
+
+				<div class="view hm-teal-light">
+    				<img src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/HCM.jpg" class="img-fluid" alt="placeholder">
+    				<div class="mask flex-center waves-effect waves-light">
+        				<h6 class="white-text border">Hồ Chí Minh</h6>
+    				</div>
+				</div>
 		</div>
 
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<a href="#" class="d-block mb-4 h-100 imgage-container">
-				<div class="centered">
-						<h5 style="color: #fff; background-color: black; opacity:0.6; filter:alpha(opacity=60); padding: 8px; border: 1px solid #cdbfe3; border-radius: 8px">Đà Nẵng</h4>
-					</div>
-				<img class="img-fluid img-thumbnail" src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/danang1.jpg" alt="">
-			</a>
+			<div class="view hm-teal-light">
+    				<img src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/danang1.jpg" class="img-fluid" alt="placeholder">
+    				<div class="mask flex-center waves-effect waves-light">
+        				<h6 class="white-text border">Đà Nẵng</h6>
+    				</div>
+				</div>
 		</div>
 
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<a href="#" class="d-block mb-4 h-100 imgage-container">
-				<div class="centered">
-						<h5 style="color: #fff; background-color: black; opacity:0.6; filter:alpha(opacity=60); padding: 8px; border: 1px solid #cdbfe3; border-radius: 8px">Quảng Ninh</h4>
-					</div>
-				<img class="img-fluid img-thumbnail" src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/ha_long_bay.jpg" alt="">
-			</a>
+			<div class="view hm-teal-light">
+    				<img src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/ha_long_bay.jpg" class="img-fluid" alt="placeholder">
+    				<div class="mask flex-center waves-effect waves-light">
+        				<h6 class="white-text border">Quảng Ninh</h6>
+    				</div>
+				</div>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-12"><a href="#" class="d-block mb-4 h-100">
-			<img class="img-fluid img-thumbnail" src="https://static.vexere.com/production/banners/43/desktop.jpg" alt="">
-		</a></div>
+		<div class="col-12">
+			<div class="view">
+    			<img src="https://static.vexere.com/production/banners/43/desktop.jpg" class="img-fluid" alt="placeholder">
+    			<div class="mask flex-center waves-effect waves-light"></div>
+			</div>
+		</div>
 	</div>
 </div>
-</div>
-</div>
 
-<!-- Footer -->
-<footer class="bd-footer text-muted">
-	<div class="container">
-		<ul class="bd-footer-links">
-			<li><a href="#">GitHub</a></li>
-			<li><a href="#">Facebook</a></li>
-			<li><a href="#">About</a></li>
-		</ul>
+<!--Footer-->
+<footer class="page-footer blue center-on-small-only">
 
-		<p></p>
-		<p></p>
-	</div>
+    <!--Footer Links-->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-6">
+                <h5 class="title">Footer Content</h5>
+                <p>Here you can use rows and columns here to organize your footer content.</p>
+            </div>
+            <!--/.First column-->
+
+            <!--Second column-->
+            <div class="col-md-6">
+                <h5 class="title">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <a href="https://www.MDBootstrap.com"> uit.edu.vn </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
 </footer>
-<!-- Footer End -->
+<!--/.Footer-->
+                
 
     <!-- Bootstrap core JavaScript
     	================================================== -->
-    	<!-- Placed at the end of the document so the pages load faster -->
-    	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    	<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
     	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-
-    	<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-    	<!-- Include jQuery -->
-    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     	<!-- Include Date Range Picker -->
     	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 
     	<script>
-    		$(document).ready(function(){
-				var date_input=$('input[name="date"]'); //our date input has the name "date"
-				var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-				date_input.datepicker({
-					format: 'dd/mm/yyyy',
-					container: container,
-					todayHighlight: true,
-					autoclose: true,
-				})
-			})
+			$('.datepicker').pickadate();
 		</script>
+	    <!-- JQuery -->
+	    <script type="text/javascript" src="mdb/js/jquery-3.2.1.min.js"></script>
+	    <!-- Bootstrap tooltips -->
+	    <script type="text/javascript" src="mdb/js/popper.min.js"></script>
+	    <!-- Bootstrap core JavaScript -->
+	    <script type="text/javascript" src="mdb/js/bootstrap.min.js"></script>
+	    <!-- MDB core JavaScript -->
+	    <script type="text/javascript" src="mdb/js/mdb.min.js"></script>
 
 	</body>
 	</html>
