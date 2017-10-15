@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>VNTransport</title>
+
+	<meta charset="UTF-8">
+
+	<!-- Bootstrap core CSS -->
+	<link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/docs.min.css">
+
+	<!-- Custom styles for this template -->
+	<link href="css/navbar.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/businfo.css">
+	<!-- fontawesome.io -->
+	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+</head>
+<body>
+
+	<!-- Navigation Bar -->
+	<header class="navbar navbar-light navbar-toggleable-md bd-navbar" style="margin-bottom: 0px">
+		<nav class="container w-100">
+
+			<div class="d-flex justify-content-between">
+				<a class="navbar-brand" href="/">
+					VNTransport
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bd-main-nav">
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-item nav-link active" href="#" onclick="">Trang Chủ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link " href="#" onclick="">Tin Tức</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link " href="#" onclick="">Liên Hệ</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link" href="#" onclick="">Đăng Nhập</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-item nav-link" href="#" onclick="">Đăng Kí</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- Navigation Bar End -->
+
+	<!-- Page Content -->
+	<div class="span3">
+		<div class="well">
+
+			<div class="col-12">
+				<h2 class="text-info" align="middle">Thông tin xe</h2>
+			</div>          
+
+			<div class="col-sm-4">
+				<img class="logo col-sm-12" src="img/logo-hl.png" style="margin:auto; margin-top: 50px; margin-bottom: 20px;" align="left">
+			</div>            
+
+			<div class="row infomation col-sm-8" style="font-size: 150%; margin: 15px;">
+				<hr>
+				<div class="col-xs-12 col-sm-12 col-md-3">Tên nhà xe:</div>
+				<div class="col-xs-12 col-sm-12 col-md-9">Hoàng Long</div>
+				<hr>
+
+				<hr>
+				<div class="col-xs-12 col-sm-12 col-md-3">Tên chủ xe:</div>
+				<div class="col-xs-12 col-sm-12 col-md-9">Vũ Văn Tuyến</div>
+				<hr>
+
+				<hr>
+				<div class="col-xs-12 col-sm-12 col-md-3">Dịch vụ:</div>
+				<div class="col-xs-12 col-sm-12 col-md-9">Vận tải đường bộ</div>
+				<hr>
+
+				<hr>
+				<div class="col-xs-5 col-sm-12 col-md-3" style="margin-top: 15px;">Đánh giá:</div>             
+
+				<div class="stars">
+
+					<form action="">
+
+						<input class="star star-5" id="star-5" type="radio" name="star"/>
+
+						<label class="star star-5" for="star-5"></label>
+
+						<input class="star star-4" id="star-4" type="radio" name="star"/>
+
+						<label class="star star-4" for="star-4"></label>
+
+						<input class="star star-3" id="star-3" type="radio" name="star"/>
+
+						<label class="star star-3" for="star-3"></label>
+
+						<input class="star star-2" id="star-2" type="radio" name="star"/>
+
+						<label class="star star-2" for="star-2"></label>
+
+						<input class="star star-1" id="star-1" type="radio" name="star"/>
+
+						<label class="star star-1" for="star-1"></label>
+
+					</form>
+				</div>
+			</div>               
+
+		</div> 
+		<hr>
+
+		<div class="row" style="margin: auto;">
+			<div class="column">
+				<img src="img/Hoanglong1.jpg" width="130" height="90" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+			</div>
+			<div class="column">
+				<img src="img/Hoanglong2.jpg" width="130" height="90" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+			</div>
+			<div class="column">
+				<img src="img/Hoanglong3.jpg" width="130" height="90" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+			</div>
+			<div class="column">
+				<img src="img/Hoanglong4.jpg" width="130" height="90" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+			</div>
+		</div>
+
+		<div id="myModal" class="modal">
+			<span class="close cursor" onclick="closeModal()">&times;</span>
+			<div class="modal-content" >
+
+				<div class="mySlides">
+					<div class="numbertext">1 / 4</div>
+					<img src="img/Hoanglong1.jpg" width="960" height="540">
+				</div>
+
+				<div class="mySlides">
+					<div class="numbertext">2 / 4</div>
+					<img src="img/Hoanglong2.jpg" width="960" height="540">
+				</div>
+
+				<div class="mySlides">
+					<div class="numbertext">3 / 4</div>
+					<img src="img/Hoanglong3.jpg" width="960" height="540">
+				</div>
+
+				<div class="mySlides">
+					<div class="numbertext">4 / 4</div>
+					<img src="img/Hoanglong4.jpg" width="960" height="540">
+				</div>
+
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+
+				<div class="allcolumn">
+					<div class="column">
+						<img class="demo cursor" src="img/Hoanglong1.jpg" width="130" height="90" onclick="currentSlide(1)">
+					</div>
+					<div class="column" >
+						<img class="demo cursor" src="img/Hoanglong2.jpg" width="130" height="90" onclick="currentSlide(2)">
+					</div>
+					<div class="column">
+						<img class="demo cursor" src="img/Hoanglong3.jpg" width="130" height="90" onclick="currentSlide(3)">
+					</div>
+					<div class="column">
+						<img class="demo cursor" src="img/Hoanglong4.jpg" width="130" height="90" onclick="currentSlide(4)">
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+		<script src="vendor/transport.js"></script>
+		<hr>                  
+		<hr>		
+		<div class="col-11" style="margin: auto; font-size: 150%;">Hãng xe Hoàng Long hay còn gọi là Hoàng Long Asia hoặc Hoàng Long Bus là một trong những thương hiệu xe chất lượng cao hàng đầu Việt Nam. Phục vụ hàng chục triệu hành khách Việt Nam và quốc tế trong suốt 16 năm hoạt động, xe khách Hoàng Long đã đạt giải thưởng Sao Vàng đất Việt 3 lần liên tiếp. Xe giường nằm cao cấp Hoàng Long liên tục cải tiến với rất nhiều tiện ích như TV, máy lạnh, khăn lạnh, nhà vệ sinh,... giúp hành khách trên xe luôn cảm giác thoải mái. Tất cả các lái phụ xe của nhà xe Hoàng Long đều được học giao tiếp du lịch để luôn đối xử ân cần và lịch sự đối với hành khách. Nhờ những cố gắng không ngừng, danh tiếng của Hoàng Long lan rộng khắp Việt Nam và quốc tế. Hoàng Long - Không ngừng đổi mới, không ngừng nâng cao chất lượng phục vụ.</div>
+		<hr>              
+		<div class="container">
+			<div class="row">      
+				<div class="col-md-12">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h3 class="panel-title">Bảng Giá</h3>
+							<div class="pull-right">
+								<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+									<i class="glyphicon glyphicon-filter"></i>
+								</span>
+							</div>
+						</div>
+						<div class="panel-body">
+							<input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Lọc kết quả" />
+						</div>
+						<table class="table table-hover" id="task-table">
+							<thead>
+								<tr>
+									<th>STT</th>
+									<th>Tuyến Đường</th>
+									<th>Loại xe</th>
+									<th>Số chuyến</th>
+									<th>Giá vé</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Hà Nội đi Ngô Quyền</td>
+									<td>VIP Limousine 9 chỗ</td>
+									<td>25 chuyến/ngày</td>
+									<td>160.000₫</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Lê Chân đi Hà Nội </td>
+									<td>Ghế ngồi 45 chỗ</td>
+									<td>18 chuyến/ngày</td>
+									<td>90.000₫</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Sài Gòn đi Cẩm Phả</td>
+									<td>Giường nằm 39 chỗ</td>
+									<td>2 chuyến/ngày</td>
+									<td>920.000₫</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Hà Nội đi Cát Bà</td>
+									<td>Ghế ngồi 45 chỗ</td>
+									<td>2 chuyến/ngày</td>
+									<td>220.000₫</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>Cát Bà đi Hà Nội</td>
+									<td>Ghế ngồi 45 chỗ</td>
+									<td>2 chuyến/ngày</td>
+									<td>200.000₫</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>Lê Chân đi Sài Gòn</td>
+									<td>Giường nằm 39 chỗ</td>
+									<td>2 chuyến/ngày</td>
+									<td>780.000₫</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+
+	<!-- Footer -->
+	<footer class="bd-footer text-muted">
+		<div class="container">
+			<ul class="bd-footer-links">
+				<li><a href="#">GitHub</a></li>
+				<li><a href="#">Facebook</a></li>
+				<li><a href="#">About</a></li>
+			</ul>
+
+			<p></p>
+			<p></p>
+		</div>
+	</footer>
+	<!-- Footer End -->
+
+    <!-- Bootstrap core JavaScript
+    	================================================== -->
+    	<!-- Placed at the end of the document so the pages load faster -->
+    	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    	<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    	<script src="js/businfo.js"></script>
+    	<script src="js/pricetable.js"></script>
+    </body>
+    </html>
+
+
+
