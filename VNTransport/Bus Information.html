@@ -16,6 +16,8 @@
 	<link href="mdb/css/style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/ratingstat.css">
 	<link rel="stylesheet" type="text/css" href="css/businfo.css">
+	<!-- DatePicker -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
 	<style type="text/css">
 	
 	.navbar.navbar-light .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
@@ -242,11 +244,12 @@
 									<td>VIP Limousine 9 chỗ</td>
 									<td>25 chuyến/ngày</td>
 									<td>160.000₫</td>
-									<td>
-										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;">
+									<td>			
+										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;" id="date" name="date">
 											Chọn ngày
 
-										</button>
+										</button>			
+
 									</td>
 									
 								</tr>
@@ -257,7 +260,7 @@
 									<td>18 chuyến/ngày</td>
 									<td>90.000₫</td>
 									<td>
-										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;">
+										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;" id="date" name="date">
 											Chọn ngày
 
 										</button>
@@ -270,7 +273,7 @@
 									<td>2 chuyến/ngày</td>
 									<td>920.000₫</td>
 									<td>
-										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;">
+										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;" id="date" name="date">
 											Chọn ngày
 
 										</button>
@@ -283,7 +286,7 @@
 									<td>2 chuyến/ngày</td>
 									<td>220.000₫</td>
 									<td>
-										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;">
+										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;" id="date" name="date">
 											Chọn ngày
 
 										</button>
@@ -296,7 +299,7 @@
 									<td>2 chuyến/ngày</td>
 									<td>200.000₫</td>
 									<td>
-										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;">
+										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;" id="date" name="date">
 											Chọn ngày
 
 										</button>
@@ -309,7 +312,7 @@
 									<td>2 chuyến/ngày</td>
 									<td>780.000₫</td>
 									<td>
-										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;">
+										<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;" id="date" name="date">
 											Chọn ngày
 
 										</button>
@@ -371,5 +374,21 @@
     	<script type="text/javascript" src="js/pricetable.js"></script>
     	<script type="text/javascript" src="datepicker.js"></script>
 
-    </body>
-    </html>
+    	<!-- Include DatePicker -->
+    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+    	<script>
+    		$(document).ready(function(){
+				var date_input=$('button[name="date"]'); //our date input has the name "date"
+				var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+				date_input.datepicker({
+					format: 'dd/mm/yyyy',
+					container: container,
+					todayHighlight: true,
+					autoclose: true,
+				})
+			})
+		</script>
+
+	</body>
+	</html>
