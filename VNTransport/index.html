@@ -1,606 +1,596 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>VNTransport</title>
 
-	<meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- Bootstrap core CSS -->
-	<link href="mdb/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Material Design Bootstrap -->
-	<link href="mdb/css/mdb.min.css" rel="stylesheet">
-	<!-- Your custom styles (optional) -->
-	<link href="mdb/css/style.css" rel="stylesheet">
+    <title>Material Design Bootstrap</title>
 
-	<style type="text/css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	.navbar.navbar-light .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
-		background-color: rgba(0,0,0,0);
-		font-weight: bold;
-	}
-	.bd-masthead {
-		padding: 8rem 4rem 4rem 4rem;
-		text-align: center;
-		background-image: -webkit-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
-		background-image: -o-linear-gradient(135deg,#00567F,#26637F,#00ADFF);
-		background-image: linear-gradient(135deg,#00567F,#26637F,#00ADFF);
-	}
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-	.div-center{
-		display:flex;
-		justify-content:center;
-		align-items:center;
-	}
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
 
-	.div-right{
-		display:flex;
-		justify-content:
-		flex-end;
-		align-items:center;
-	}
+    <!-- Template styles -->
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+        
+        html,
+        body,
+        .view {
+            height: 100%;
+        }
+        /* Navigation*/
+        
+        .navbar {
+            background-color: transparent;
+        }
+        
+        .scrolling-navbar {
+            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+            transition: background .5s ease-in-out, padding .5s ease-in-out;
+        }
+        
+        .top-nav-collapse {
+            background-color: #26637F;
+        }
+        
+        footer.page-footer {
+            background-color: #26637F;
+            margin-top: -1px;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                background-color: #26637F;
+            }
+        }
+        .navbar .btn-group .dropdown-menu a:hover {
+            color: #000 !important;
+        }
+        .navbar .btn-group .dropdown-menu a:active {
+            color: #fff !important;
+        }
+        /*Call to action*/
+        
+        .flex-center {
+            color: #fff;
+        }
+        
+        .view {
+            background: url("img/travel_tourism_hd.jpg")no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
 
-	.bd-footer a {
-		font-weight: 500;
-		color: white;
-	}
-	.bd-footer{
-		bottom:0;
-		width:100%;
-		height:auto;   /* Height of the footer */
-		background-color: #26637F;
-		height: 50px;
-		left: 0px;
-		right: 0px;
-		margin-bottom: 0px;
-	}
+        .md-form label {
+            color: #f8f9fa;
+        }
 
-	.text-muted {
-		color: white!important;
-	}
+        .form-control {
+            color: #f8f9fa;
+        }
 
-	body{
-		min-width: 400px;
-	}
+        .form-control:focus {
+            color: #f8f9fa;
+        }
 
-	.border {
-		border-color: #fff;
-		border-radius: 8px;
-		border-style: solid;
-		padding: 8px;
-	}
+    </style>
 
-</style>
 </head>
-</head>
+
 <body>
-	
-	<!-- Navigation Bar -->
-	<header>
 
-		<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white scrolling-navbar">
-			<a class="navbar-brand" href="#"><strong>VNTransport</strong></a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Trang chủ<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Tin tức</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Liên hệ</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Đăng nhập</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Đăng kí</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+    <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">VNTransport</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tin tức</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Liên hệ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Đăng kí</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-	</header>
-	<!-- Navigation Bar End -->
+    <!--Mask-->
+    <div class="view hm-black-light">
+        <div class="full-bg-img flex-center">
+            <ul>
+                <li>
+                    <h1 class="h1-responsive wow fadeInUp title"><strong>Xin chào, Bạn muốn đi đến đâu?</strong></h1>
+                </li>
+                <li>
+                    <div class="row wow fadeIn" data-wow-delay="0.4s">
+                        <div class="col-md-3">
+                            <div class="md-form">
+                                <input type="text" id="form1" class="form-control validate">
+                                <label for="form1">Nơi đi</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form">
+                                <input type="text" id="form2" class="form-control validate">
+                                <label for="form2">Nơi đến</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="md-form">
+                                <input type="text" id="form3" class="form-control validate">
+                                <label for="form3">Ngày đi</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="md-form">
+                                <button class="btn btn-lg btn-dark-green">Tìm vé</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="payment">
+                    <i class="fa fa-cc-visa fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-cc-mastercard fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-money fa-2x" aria-hidden="true"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/.Mask-->
 
-	<main class="bd-masthead">
-		<div class="container">
+    <!-- Main container-->
+    <div class="container">
 
-			<!-- Search Form -->
-			<form class="md-form" style="border-style: 1px solid;">
-				<div class="row">
-					<div class="col-md-6 div-right">
-						<i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: #fff; padding: 21px"></i>
-						<input type="text" class="input-alternate" style="background-color: #fff; border-radius: 8px; padding:4px;" placeholder="Nhập nơi đi">
-					</div>	
+        <div class="divider-new pt-5">
+            <h2 class="h2-responsive wow fadeIn" data-wow-delay="0.2s">Về chúng tôi</h2>
+        </div>
 
-					<div class="col-md-6 div-right">
-						<i class="fa fa-arrow-right fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
-						<input type="text" class="input-alternate" style="background-color: #fff; border-radius: 8px; padding:4px;" placeholder="Nhập nơi đến">
-					</div>	
-				</div>
+        <!--Section: About-->
+        <section id="about" class="text-center wow fadeIn" data-wow-delay="0.2s">
 
-				<div class="row div-center">
-					<div class="col-md-6 div-right">
-						<i class="fa fa-calendar-o fa-2x" aria-hidden="true" style="color: #fff; padding: 16px"></i>
-						<input class="form-control input-alternate datepicker" id="date" name="date" style="background-color: #fff; border-radius: 8px; padding:4px; margin-bottom: 0px;" placeholder="Chọn ngày đi" type="text"/>
-					</div>
+            <p>VNTransport cung cấp cho bạn các thông tin về các chuyến xe nhanh chóng và chính xác nhất.</p>
 
-					<div class="col-md-6 div-right"><button type="button" class="btn btn-dark-green" aria-label="Left Align" style="margin-left: 64px; margin-right: 0px; border-radius: 8px;">
-						Tìm vé xe 
-						<span class="fa fa-car" aria-hidden="true"></span>
-					</button>
-				</div>
-			</div> 
-		</form>
-		<!-- Search Form End -->
+        </section>
+        <!--Section: About-->
 
-	</div>
-</main>
+        <div class="divider-new">
+            <h2 class="h2-responsive wow fadeIn">Các tuyến đường phổ biến</h2>
+        </div>
 
-<main>
-	<div class="container">
-		<div class="row mt-5 pt-5">
-			<div class="col text-center">
-				<h1>VNTransport</h1>
-				<h4>Chúng tôi cung cấp cho bạn các thông tin về các chuyến xe nhanh chóng và chính xác nhất</h4>
-				<br>
-			</div>
-		</div>
-	</div>
-</main>
+        <!--Section: The popular routes-->
+        <ul class="nav md-pills nav-justified pills-secondary">
+            <li class="nav-item">
+                <a class="nav-link active wow fadeIn" ata-wow-delay="0.2s" data-toggle="tab" href="#panel1" role="tab"><h4>Sài Gòn</h4></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link wow fadeIn" ata-wow-delay="0.4s" data-toggle="tab" href="#panel2" role="tab"><h4>Hà Nội</h4></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link wow fadeIn" ata-wow-delay="0.6s" data-toggle="tab" href="#panel3" role="tab"><h4>Đà Nẵng</h4></a>
+            </li>
+        </ul>
+        <!-- Tab panels -->
+        <div class="tab-content card wow fadeIn" ata-wow-delay="0.2s">
+            <!--Panel 1-->
+            <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+                <br>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="text-align: center; vertical-align: middle;">
+                                <h4>Nơi đến</h4>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle;">
+                                <h4>Giá vé</h4>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-<!-- The popular routes -->
-<div class="container">
-	<h3 style="margin-top: 24px"><b>Các tuyến đường phổ biến</b></h3>
-	<hr>
+                    <tbody>
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>1</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Hà Nội</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>900.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>2</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Đà Lạt</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>150.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
 
-	<ul class="nav nav-tabs nav-justified bd-masthead" style="padding: 8px;">
-		<li class="nav-item">
-			<a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"><h4>Sài Gòn</h4></a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#panel2" role="tab"><h4>Hà Nội</h4></a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#panel3" role="tab"><h4>Đà Nẵng</h4></a>
-		</li>
-	</ul>
-	<!-- Tab panels -->
-	<div class="tab-content card">
-		<!--Panel 1-->
-		<div class="tab-pane fade in show active" id="panel1" role="tabpanel">
-			<br>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th></th>
-						<th style="text-align: center; vertical-align: middle;">
-							<h4>Nơi đến</h4>
-						</th>
-						<th style="text-align: center; vertical-align: middle;">
-							<h4>Giá vé</h4>
-						</th>
-						<th></th>
-					</tr>
-				</thead>
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>3</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Nha Trang</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>180.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-				<tbody>
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>1</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Hà Nội</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>900.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>2</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Đà Lạt</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>150.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
+            </div>
+            <!--/.Panel 1-->
 
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>3</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Nha Trang</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>180.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+            <!--Panel 2-->
+            <div class="tab-pane fade" id="panel2" role="tabpanel">
+                <br>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="text-align: center; vertical-align: middle;">
+                                <h4>Nơi đến</h4>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle;">
+                                <h4>Giá vé</h4>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>1</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Sài Gòn</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>900.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>2</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Sapa</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>260.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
 
-		</div>
-		<!--/.Panel 1-->
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>3</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Lào Cai</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>230.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-		<!--Panel 2-->
-		<div class="tab-pane fade" id="panel2" role="tabpanel">
-			<br>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th></th>
-						<th style="text-align: center; vertical-align: middle;">
-							<h4>Nơi đến</h4>
-						</th>
-						<th style="text-align: center; vertical-align: middle;">
-							<h4>Giá vé</h4>
-						</th>
-						<th></th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>1</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Sài Gòn</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>900.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>2</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Sapa</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>260.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
+            </div>
+            <!--/.Panel 2-->
 
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>3</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Lào Cai</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>230.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+            <!--Panel 3-->
+            <div class="tab-pane fade" id="panel3" role="tabpanel">
+                <br>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="text-align: center; vertical-align: middle;">
+                                <h4>Nơi đến</h4>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle;">
+                                <h4>Giá vé</h4>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>1</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Thái Bình </h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>360.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>2</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Tân Kỳ</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>250.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
 
-		</div>
-		<!--/.Panel 2-->
+                        <tr>
+                            <th scope="row" style="text-align: center; vertical-align: middle;">
+                                <h4>3</h4>
+                            </th>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>Hội An</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <h4>89.000 ₫/vé</h4>
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                <button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
+                                    Liên hệ
+                                    <span class="fa fa-car" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-		<!--Panel 3-->
-		<div class="tab-pane fade" id="panel3" role="tabpanel">
-			<br>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th></th>
-						<th style="text-align: center; vertical-align: middle;">
-							<h4>Nơi đến</h4>
-						</th>
-						<th style="text-align: center; vertical-align: middle;">
-							<h4>Giá vé</h4>
-						</th>
-						<th></th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>1</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Thái Bình </h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>360.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>2</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Tân Kỳ</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>250.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
+            </div>
+            <!--/.Panel 3-->
+        </div>
+        <!--Section: The popular routes-->
 
-					<tr>
-						<th scope="row" style="text-align: center; vertical-align: middle;">
-							<h4>3</h4>
-						</th>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>Hội An</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<h4>89.000 ₫/vé</h4>
-						</td>
-						<td style="text-align: center; vertical-align: middle;">
-							<button type="button" class="btn btn-dark-green" style="border-radius: 8px;">
-								Liên hệ
-								<span class="fa fa-car" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+        <div class="divider-new pt-5">
+            <h2 class="h2-responsive wow fadeIn">Hãng xe nổi tiếng</h2>
+        </div>
 
-		</div>
-		<!--/.Panel 3-->
-	</div>
+        <!--Section: Best features-->
+        <section id="best-features">
 
-</div>
-<!-- The popular routes End -->
+            <div class="row pt-3">
 
-<!-- Travel -->
-<div class="bd-featurette">
-	<div class="container">
-		<h3 style="margin-top: 32px"><b>Địa điểm du lịch</b></h3>
-		<hr>
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 fadeIn">
+            <!--First columnn-->
+            <div class="col-lg-4">
+                <!--Card-->
+                <div class="card wow fadeIn" data-wow-delay="0.2s">
 
-				<div class="view hm-teal-light">
-					<img src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/HCM.jpg" class="img-fluid" alt="placeholder">
-					<div class="mask flex-center waves-effect waves-light">
-						<h6 class="white-text border">Hồ Chí Minh</h6>
-					</div>
-				</div>
-			</div>
+                    <!--Card image-->
+                    <img class="img-fluid" src="https://static.vexere.com/c/i/771/xe-hoang-long-VeXeRe-6Cyi46S-1000x600.jpg" alt="Card image cap">
 
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-				<div class="view hm-teal-light">
-					<img src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/danang1.jpg" class="img-fluid" alt="placeholder">
-					<div class="mask flex-center waves-effect waves-light">
-						<h6 class="white-text border">Đà Nẵng</h6>
-					</div>
-				</div>
-			</div>
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">Hoàng Long</h4>
+                        <!--Text-->
+                        <p class="card-text">Hãng xe Hoàng Long hay còn gọi là Hoàng Long Asia hoặc Hoàng Long Bus là một trong những thương hiệu xe chất lượng cao hàng đầu Việt Nam...</p>
+                        <a href="#" class="btn btn-info">Xem thêm</a>
+                    </div>
 
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-				<div class="view hm-teal-light">
-					<img src="https://znews-photo-td.zadn.vn/w960/Uploaded/jaroin/2017_03_10/ha_long_bay.jpg" class="img-fluid" alt="placeholder">
-					<div class="mask flex-center waves-effect waves-light">
-						<h6 class="white-text border">Quảng Ninh</h6>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Travel End -->
-	</div>
+                </div>
+                <!--/.Card-->
+            </div>
+            <!--First columnn-->
 
+            <!--Second columnn-->
+            <div class="col-lg-4">
+                <!--Card-->
+                <div class="card wow fadeIn" data-wow-delay="0.4s">
 
-	<div class="container">
-		<h3 style="margin-top: 32px"><b>Hãng xe nổi tiếng</b></h3>
-		<hr>
+                    <!--Card image-->
+                    <img class="img-fluid" src="https://static.vexere.com/c/i/11071/xe-phuong-trang-VeXeRe-Fl1H06u-1000x600.jpg" alt="Card image cap">
 
-		<!--Carousel Wrapper-->
-		<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">Phương Trang</h4>
+                        <!--Text-->
+                        <p class="card-text">Xe Phương Trang (còn gọi là Futa Phương Trang) đã ghi lại dấu ấn tốt đẹp trong lòng hành khách trong suốt 11 năm hình thành và phát triển...</p>
+                        <a href="#" class="btn btn-info">Xem thêm</a>
+                    </div>
 
-			<!--Indicators-->
-			<ol class="carousel-indicators">
-				<li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-				<li data-target="#multi-item-example" data-slide-to="1"></li>
-			</ol>
-			<!--/.Indicators-->
+                </div>
+                <!--/.Card-->
 
-			<!--Slides-->
-			<div class="carousel-inner" role="listbox">
+            </div>
+            <!--Second columnn-->
 
-				<!--First slide-->
-				<div class="carousel-item active">
+            <!--Third columnn-->
+            <div class="col-lg-4 mb-4">
+                <!--Card-->
+                <div class="card wow fadeIn" data-wow-delay="0.6s">
 
-					<div class="col-md-4">
-						<div class="card">
-							<img class="img-fluid" src="https://static.vexere.com/c/i/771/xe-hoang-long-VeXeRe-6Cyi46S-1000x600.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h4 class="card-title">Hoàng Long</h4>
-								<p class="card-text">Hãng xe Hoàng Long hay còn gọi là Hoàng Long Asia hoặc Hoàng Long Bus là một trong những thương hiệu xe chất lượng cao hàng đầu Việt Nam...</p>
-								<a class="btn btn-primary">Xem thêm</a>
-							</div>
-						</div>
-					</div>
+                    <!--Card image-->
+                    <img class="img-fluid" src="https://static.vexere.com/c/i/11072/xe-thanh-buoi-VeXeRe-Ww28JeD-1000x600.jpg">
 
-					<div class="col-md-4 clearfix d-none d-md-block">
-						<div class="card">
-							<img class="img-fluid" src="https://static.vexere.com/c/i/11071/xe-phuong-trang-VeXeRe-Fl1H06u-1000x600.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h4 class="card-title">Phương Trang</h4>
-								<p class="card-text">Xe Phương Trang (còn gọi là Futa Phương Trang) đã ghi lại dấu ấn tốt đẹp trong lòng hành khách trong suốt 11 năm hình thành và phát triển...</p>
-								<a class="btn btn-primary">Xem thêm</a>
-							</div>
-						</div>
-					</div>
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">Thành Bưởi</h4>
+                        <!--Text-->
+                        <p class="card-text">Thành Bưởi với lực lượng lao động khoảng 300 người; số lượng phương tiện vận chuyển khỏang 70 xe Hyundai Aero Space đời mới và sang trọng...</p>
+                        <a href="#" class="btn btn-info">Xem thêm</a>
+                    </div>
 
-					<div class="col-md-4 clearfix d-none d-md-block">
-						<div class="card">
-							<img class="img-fluid" src="https://static.vexere.com/c/i/11072/xe-thanh-buoi-VeXeRe-Ww28JeD-1000x600.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h4 class="card-title">Thành Bưởi</h4>
-								<p class="card-text">Thành Bưởi với lực lượng lao động khoảng 300 người; số lượng phương tiện vận chuyển khỏang 70 xe Hyundai Aero Space đời mới và sang trọng...</p>
-								<a class="btn btn-primary">Xem thêm</a>
-							</div>
-						</div>
-					</div>
+                </div>
+                <!--/.Card-->
+            </div>
+            <!--Third columnn-->
 
-				</div>
-				<!--/.First slide-->
+            </div>
 
-				<!--Second slide-->
-				<div class="carousel-item">
+        </section>
+        <!--/Section: Best features-->
 
-					<div class="col-md-4">
-						<div class="card">
-							<img class="img-fluid" src="https://static.vexere.com/c/i/541/xe-thesinhtourist-(sinh-cafe)-VeXeRe-4r7sriz-1000x600.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h4 class="card-title">TheSinhTourist</h4>
-								<p class="card-text">Điểm nổi bật nhất ở nhà xe The Sinh Tourist là các chuyến đi khởi hành hàng ngày và không phụ thuộc vào số lượng khách, cung cấp các dịch vụ tốt nhất cho khách hàng...</p>
-								<a class="btn btn-primary">Xem thêm</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-4 clearfix d-none d-md-block">
-						<div class="card">
-							<img class="img-fluid" src="https://static.vexere.com/c/i/971/xe-thuan-tien-VeXeRe-882bk3U-1000x600.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h4 class="card-title">Thuận Tiến</h4>
-								<p class="card-text">Với uy tín được xây dựng trong một thời gian tương đối dài, hãng xe Thuận Tiến tự tin đem đến cho quý khách dịch vụ đi lại thuận tiện và thoải mái...</p>
-								<a class="btn btn-primary">Xem thêm</a>
-							</div>
-						</div>
-					</div>
-
-					
-					<div class="col-md-4 clearfix d-none d-md-block">
-						<div class="card">
-							<img class="img-fluid" src="https://static.vexere.com/c/i/11072/xe-thanh-buoi-VeXeRe-Ww28JeD-1000x600.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h4 class="card-title">Thành Bưởi</h4>
-								<p class="card-text">Thành Bưởi với lực lượng lao động khoảng 300 người; số lượng phương tiện vận chuyển khỏang 70 xe Hyundai Aero Space đời mới và sang trọng...</p>
-								<a class="btn btn-primary">Xem thêm</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				<!--/.Second slide-->
-
-			</div>
-			<!--/.Slides-->
-
-			<!--Controls-->
-			<a class="carousel-control-prev" href="#multi-item-example" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			
-			<a class="carousel-control-next" href="#multi-item-example" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-			<!--/.Controls-->
-		</div>
-		<!--/.Carousel Wrapper-->
-	</div>
-
-	<!--Footer-->
-	<footer class="container-fluid">
-		<div class="row" style="background-color: #26637f; color: white;">
-			<div class="col-md-12 div-center" style="font-weight: bold;">
-				<span style="padding: 5px;">Bùi Hữu Phước</span>
-				<span style="padding: 5px;">Văn Minh Tiến</span>
-				<span style="padding: 5px;">Huỳnh Hữu Lợi</span>
-			</div>
-			<div class="col-md-12 div-center" style="padding: 5px;">
-				© 2017 Copyright: &nbsp;<a style="color: white;" href="http://www.uit.edu.vn"> uit.edu.vn </a>
-			</div>
-		</div>
-	</footer>
-	<!--Copyright-->
-	<!--/.Footer-->
+    </div>
+    <!--/ Main container-->
 
 
-    <!-- Bootstrap core JavaScript
-    	================================================== -->
-    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only mt-4">
 
-    	<!-- Include Date Range Picker -->
-    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+        <!--Footer links-->
+        <div class="container-fluid">
+            
+        </div>
+        <!--/.Footer links-->
 
-    	<script>
-    		$('.datepicker').pickadate();
-    		$('.carousel').carousel();
-    		$('.carousel').carousel({
-    			interval: 500
-    		});
+        <hr>
 
-    	</script>
+        <!--Call to action-->
+        <div class="call-to-action">
+           
+        </div>
+        <!--/.Call to action-->
 
-    	<script type="text/javascript" src="js/index.js"></script>
-    	<!-- JQuery -->
-    	<script type="text/javascript" src="mdb/js/jquery-3.2.1.min.js"></script>
-    	<!-- Bootstrap tooltips -->
-    	<script type="text/javascript" src="mdb/js/popper.min.js"></script>
-    	<!-- Bootstrap core JavaScript -->
-    	<script type="text/javascript" src="mdb/js/bootstrap.min.js"></script>
-    	<!-- MDB core JavaScript -->
-    	<script type="text/javascript" src="mdb/js/mdb.min.js"></script>
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2017 Copyright: <a href="#"> UIT.edu.vn </a>
 
-    </body>
-    </html>
+            </div>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap dropdown -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+      <!--Google Maps-->
+    <script src="https://maps.google.com/maps/api/js"></script>
+
+    <script>
+        function init_map() {
+
+            var var_location = new google.maps.LatLng(40.725118, -73.997699);
+
+            var var_mapoptions = {
+                center: var_location,
+
+                zoom: 14
+            };
+
+            var var_marker = new google.maps.Marker({
+                position: var_location,
+                map: var_map,
+                title: "New York"
+            });
+
+            var var_map = new google.maps.Map(document.getElementById("map-container"),
+                var_mapoptions);
+
+            var_marker.setMap(var_map);
+
+        }
+
+        google.maps.event.addDomListener(window, 'load', init_map);
+    </script>
+
+    <!-- Animations init-->
+    <script>
+        new WOW().init();
+    </script>
+
+</body>
+
+</html>
