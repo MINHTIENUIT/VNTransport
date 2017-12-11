@@ -16,6 +16,7 @@
 	<link href="mdb/css/style.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/ratingstat.css">
 	<link rel="stylesheet" type="text/css" href="css/businfo.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<!-- DatePicker -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
 	<style type="text/css">
@@ -100,7 +101,39 @@
 						<a class="nav-link" href="#">Liên hệ</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Đăng nhập</a>
+						<!-- Button to open the modal login form -->
+						<a class="nav-link" href="#" onclick="document.getElementById('login').style.display='block'">Đăng nhập</a>						
+						
+						<!-- The Modal -->
+						<div id="login" class="modallogin">
+							<span onclick="document.getElementById('login').style.display='none'" 
+							class="closelogin" title="Close Modal">&times;</span>
+
+							<!-- Modal Content -->
+							<div class="col-8" style="margin-right:auto; margin-left:auto;">							
+								<form class="modallogin-content animatelogin" action="/action_page.php">
+									<div class="imgcontainer">
+										<img src="img/login.png" alt="Avatar" class="avatar">
+									</div>
+
+									<div class="container">
+										<label><b>Username</b></label>
+										<input type="text" placeholder="Enter Username" name="uname" required>
+
+										<label><b>Password</b></label>
+										<input type="password" placeholder="Enter Password" name="psw" required>
+
+										<button type="submit">Login</button>
+										
+									</div>
+
+									<div class="container" style="background-color:#f1f1f1">
+										<button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
+										<span class="psw">Forgot <a href="#">password?</a></span>
+									</div>
+								</form>
+							</div>							
+						</div>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Đăng kí</a>
@@ -350,18 +383,6 @@
     	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    	<!-- Include Date Range Picker -->
-    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-
-    	<script>
-    		$('.datepicker').pickadate();
-    		$('.carousel').carousel();
-    		$('.carousel').carousel({
-    			interval: 500
-    		});
-
-    	</script>
-
     	<script type="text/javascript" src="js/index.js"></script>
     	<!-- JQuery -->
     	<script type="text/javascript" src="mdb/js/jquery-3.2.1.min.js"></script>
@@ -373,7 +394,8 @@
     	<script type="text/javascript" src="mdb/js/mdb.min.js"></script>
     	<script type="text/javascript" src="js/pricetable.js"></script>
     	<script type="text/javascript" src="datepicker.js"></script>
-
+    	<!-- Login Form -->
+    	<script type="text/javascript" src="js/login.js"></script>
     	<!-- Include DatePicker -->
     	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 
