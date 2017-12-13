@@ -24,8 +24,8 @@
 	
 	html,
 	body,
-	.view {
-		height: 90%;
+	.view {		
+		height: 105%;
 	}
 	/* Navigation*/
 	
@@ -66,7 +66,7 @@
 	}
 	
 	.view {
-		background: url("img/travel_tourism_hd.jpg")no-repeat center center fixed;
+		background: url("img/travel_tourism_hd1.gif")no-repeat center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
@@ -135,86 +135,73 @@
 		</div>
 	</nav>
 	<!-- Navigation Bar End -->
-	<div class="view hm-black-light hm-black-strong">
-		<div class="full-bg-img flex-center container-fluid">
-			<div class="row">
+	<div class="">
+		<div class="view flex-center container-fluid">
+			<div class="row" style="padding-top: 100px; min-height: 678px;">
 				<!-- Form đăng kí thông tin hãng xe -->			
-				<div class="col-md-12" style="padding-top: 10px; padding-bottom: 10px; text-align: center;">
-					<h1 class="h1-responsive wow fadeInUp title">Đăng Ký Thông Tin Hãng Xe</h1>
+				<div class="col-md-12" style="text-align: center;">
+					<h1 class="h1-responsive wow fadeInUp title">Thông Tin Hãng Xe</h1>
 				</div>
-				<div class="col-md-12 col-md-offset-2 row wow fadeInUp">	
-					<div class="col-md-4">
-						<div class="md-form">
-							<input type="text" id="form1" class="form-control">
-							<label for="form1" class="">Hãng Xe</label>
+				<form action="form_xe.php" method="post">
+					<div class="col-md-12 col-md-offset-2 row wow fadeInUp">	
+						<div class="col-md-4">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control" name="HangXe">
+								<label for="form1" class="">Hãng Xe</label>
+							</div>
+						</div>			
+						<div class="col-md-4">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control" name="ChuXe">
+								<label for="form1" class="">Chủ Xe</label>
+							</div>
 						</div>
-					</div>			
-					<div class="col-md-4">
-						<div class="md-form">
-							<input type="text" id="form1" class="form-control">
-							<label for="form1" class="">Chủ Xe</label>
+						<div class="col-md-4">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control" name="DiaChi">
+								<label for="form1" class="">Địa Chỉ</label>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="md-form">
-							<input type="text" id="form1" class="form-control">
-							<label for="form1" class="">Địa Chỉ</label>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="md-form">
-							<input type="text" id="form1" class="form-control">
-							<label for="form1" class="">Email</label>
-						</div>
-					</div>	
+						<div class="col-md-4">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control" name="Email">
+								<label for="form1" class="">Email</label>
+							</div>
+						</div>	
 
-					<div class="col-md-4">
-						<div class="md-form">
-							<input type="text" id="form1" class="form-control">
-							<label for="form1" class="">Số Điện Thoại</label>
+						<div class="col-md-4">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control" name="Phone">
+								<label for="form1" class="">Điện Thoại</label>
+							</div>
+						</div>							
+						<div class="col-md-4">
+							<div class="md-form">
+								<input type="text" id="form1" class="form-control" name="Photo">
+								<label for="form1" class="">Link Ảnh</label>
+							</div>
 						</div>
-					</div>							
-					<div class="col-md-4">
-						<div class="md-form">
-							<input type="text" id="form1" class="form-control">
-							<label for="form1" class="">Link Ảnh</label>
+						<div class="col-md-10 col-12">
+							<!--Basic textarea-->
+							<div class="md-form">
+								<textarea type="text" id="form7" class="md-textarea flex-center" name="Info"></textarea>
+								<label for="form7">Thông Tin Giới Thiệu</label>
+							</div>
 						</div>
+						<div class="col-md-2 col-12">		
+							<div class="md-form" style="padding-top: 44px;">
+								<input type="number" min="0" id="number-bus" class="form-control validate" name="SoXe">
+								<label for="form91" data-error="wrong" data-success="right">Số Xe Đăng Ký</label>
+							</div>
+						</div>
+					</div>		
+					<div class="col-md-12 text-center md-form wow fadeInUp">
+						<input type="submit" name="submit" value="Đăng Ký" class="btn btn-elegant">
 					</div>
-				</div>		
-				<!--Form đăng kí thông tin chuyến đi-->
-				<div class="col-md-6 wow fadeInUp">
-					<div class="md-form">
-						<!--Basic textarea-->
-						<div class="md-form">
-							<textarea type="text" id="form7" class="md-textarea flex-center"></textarea>
-							<label for="form7">Thông Tin Giới Thiệu</label>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 row wow fadeInUp" style="position: relative; left: 15%; padding-top: 40px">		
-					<form class="form-inline">
-						<div class="md-form form-group">
-							<input type="number" min="0" id="number-bus" class="form-control validate">
-							<label for="form91" data-error="wrong" data-success="right">Số Xe Đăng Ký</label>
-						</div>
-						<div class="md-form form-group">
-							<button type="button" onclick="myFunction()" id="register" class="btn btn-elegant">GO</button>
-						</div>
-					</form>
-				</div>
+				</form>
 			</div>
 		</div>
-	</div>
-
-	<!-- Đăng Ký Thông tin Xe-->
-	<div id="InformationRegister" class="row container-fluid" style="padding-left: 100px;">
-		
-	</div>
-	<div class="container-fluid text-center">
-		<div class="md-form form-group">
-			<button type="button" onclick="" id="register" class="btn btn-elegant">Đăng Ký</button>
-		</div>
-	</div>
+	</div>	
 
 	<!--Footer-->
 	<footer class="page-footer center-on-small-only mt-4">
