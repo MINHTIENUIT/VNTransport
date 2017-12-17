@@ -104,24 +104,27 @@
 </head>
 <?php
 	include('data_access_helper.php');
+	require 'HangXe.php';
 
 	$db = new DataAccessHelper;
 	$db->connect(); 
+	$HX = new HangXe;
 	
 	if (!$GLOBALS['conn']->set_charset("utf8")) {
 		exit();
 	}
 
-	$HangXe = $_POST["HangXe"];	
-	$Email = $_POST["Email"];
-	$ChuXe = $_POST["ChuXe"];
-	$Phone = $_POST["Phone"];
-	$Image = $_POST["Photo"];
-	$DiaChi = $_POST["DiaChi"];
-	$Info = $_POST["Info"];
+	$HX->HangXe = $_POST["HangXe"];	
+	$HX->Email = $_POST["Email"];
+	$HX->ChuXe = $_POST["ChuXe"];
+	$HX->Phone = $_POST["Phone"];
+	$HX->Image = $_POST["Photo"];
+	$HX->DiaChi = $_POST["DiaChi"];
+	$HX->Info = $_POST["Info"];
 
-	$insertQuery = "INSERT INTO nhaxe(EMAIL,NHAXE,CHUXE,DIENTHOAI,LINK_IMAGE,THONGTIN,DIACHI)".
-					" VALUES(\"$Email\",\"$HangXe\",\"$ChuXe\",\"$Phone\",\"$Image\",\"$Info\",\"$DiaChi\")";
+	$insertQuery = "INSERT INTO nhaxe(EMAIL,NHAXE,CHUXE,DIENTHOAI,LINK_IMAGE,THONGTIN,DIACHI)
+					 VALUES(\"$HX->Email\",\"$HX->HangXe\",\"$HX->ChuXe\",\"$HX->Phone\",\"$HX->Image\",
+					\"$HX->Info\",\"$HX->DiaChi\")";
 	$db->executeNonQuery($insertQuery);
 ?>
 <body>	
@@ -163,13 +166,13 @@
 				<div class="col-md-12 text-center">
 					<h2 class="h1-responsive wow fadeInUp title">
 						<?php  						
-						echo $HangXe;						
+						echo $HX->HangXe;						
 						?>						
 					</h2>
 				</div>
 
 				<div class="col-md-12 row container-fluid text-center wow fadeInUp">
-					<form action="insert_db.php" method="POST" class="col-md-12 row text-center">
+					<form action="DoneRegister.php" method="POST" class="col-md-12 row text-center">
 						<div class="col-12 row">						
 							<?php 
 								class Tinh{
@@ -191,8 +194,10 @@
 									}
 								}
 
-
+								session_start();
 								$SoXe = $_POST["SoXe"];
+								$_SESSION['hangxe'] = $HX->HangXe;
+								$_SESSION['value'] = $SoXe;
 								for ($i = 0; $i < $SoXe ; $i++){
 									echo BienSo($i);
 									echo NoiDi($i,$ArrayTinh);
@@ -201,6 +206,7 @@
 									echo GiaVe($i);
 									echo GhiChu($i);
 								}
+								$db->close();
 							?>
 						</div>
 						<div class="col-md-12 text-center md-form">
