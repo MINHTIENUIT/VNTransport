@@ -1,6 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php  
+include('data_access_helper.php');
+class Xe{
+	var $BienSo;
+	var $NhaXe;
+	var $TuyenDi;
+	var $Gia;
+	var $DV;
+	var $GioDi;
+}
 
+class TuyenDi{
+	var $ID;
+	var $NoiDi;
+	var $NoiDen;
+}
+
+$db = new DataAccessHelper;
+$db->connect();
+
+if (!$GLOBALS['conn']->set_charset("utf8")) {
+	exit();
+}
+
+session_start();
+$SoXe = $_SESSION['value'];
+$HangXe = $_SESSION['hangxe'];
+$resultNX = $db->executeQuery("SELECT ID FROM nhaxe where NHAXE='$HangXe'");
+$temp = mysqli_num_rows($resultNX);
+$row= mysqli_fetch_assoc($resultNX);
+$HangXe = $row["ID"];
+for ($i = 0; $i < $SoXe; $i++){
+	$TuyenDi = new TuyenDi;
+
+	$Xe = new Xe;
+	$Xe->BienSo = $_POST["BienSo".$i];
+	$Xe->NhaXe = $HangXe;
+	$Xe->Gia = $_POST["GiaVe".$i];
+	$Xe->DV = $_POST["GhiChu".$i];
+	$Xe->GioDi = $_POST["ThoiGian".$i];
+
+	$TuyenDi->NoiDi = $_POST["NoiDi".$i];
+	$TuyenDi->NoiDen = $_POST["NoiDen".$i];
+
+	$sqlTD = "SELECT ID FROM TuyenDi Where DI='$TuyenDi->NoiDi' and DEN='$TuyenDi->NoiDen'";
+	$result = $db->executeQuery($sqlTD);
+	if (mysqli_num_rows($result) == 0){
+		$insertTD = "INSERT INTO TuyenDi(DI,DEN) values(\"$TuyenDi->NoiDi\",\"$TuyenDi->NoiDen\")";
+		$db->executeNonQuery($insertTD);
+		$result = $db->executeQuery($sqlTD);
+	}
+
+	$Xe->TuyenDi = mysqli_fetch_assoc($result)["ID"];
+	$insertXe = "INSERT INTO Xe(BienSo,NHAXE,TUYENDI,GIA,DICHVU,GIODI) VALUES(\"$Xe->BienSo\",\"$Xe->NhaXe\",\"$Xe->TuyenDi\",\"$Xe->Gia\",\"$Xe->DV\",\"$Xe->GioDi\")";		
+	$db->executeNonQuery($insertXe);
+}
+?>
+
+<!DOCTYPE html>
+<html>
 <head>
 
 	<meta charset="utf-8">
@@ -134,76 +191,17 @@
 			</div>
 		</div>
 	</nav>
-	<!-- Navigation Bar End -->
 	<div class="">
 		<div class="view flex-center container-fluid">
 			<div class="row" style="padding-top: 100px; min-height: 678px;">
 				<!-- Form đăng kí thông tin hãng xe -->			
 				<div class="col-md-12" style="text-align: center;">
-					<h1 class="h1-responsive wow fadeInUp title">Thông Tin Hãng Xe</h1>
+					<h1 class="h1-responsive wow fadeInUp title">Đã Đăng Kí Thành Công</h1>
 				</div>
-				<form action="form_xe.php" method="post">
-					<div class="col-md-12 col-md-offset-2 row wow fadeInUp">	
-						<div class="col-md-4">
-							<div class="md-form">
-								<input type="text" id="form1" class="form-control" name="HangXe" required="required">
-								<label for="form1" class="">Hãng Xe</label>
-							</div>
-						</div>			
-						<div class="col-md-4">
-							<div class="md-form">
-								<input type="text" id="form1" class="form-control" name="ChuXe" required="required">
-								<label for="form1" class="">Chủ Xe</label>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="md-form">
-								<input type="text" id="form1" class="form-control" name="DiaChi" required="required">
-								<label for="form1" class="">Địa Chỉ</label>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="md-form">
-								<input type="email" id="form1" class="form-control" name="Email" required="required">
-								<label for="form1" class="">Email</label>
-							</div>
-						</div>	
-
-						<div class="col-md-4">
-							<div class="md-form">
-								<input type="text" id="form1" class="form-control" name="Phone" required="required">
-								<label for="form1" class="">Điện Thoại</label>
-							</div>
-						</div>							
-						<div class="col-md-4">
-							<div class="md-form">
-								<input type="text" id="form1" class="form-control" name="Photo" required="required">
-								<label for="form1" class="">Link Ảnh</label>
-							</div>
-						</div>
-						<div class="col-md-10 col-12">
-							<!--Basic textarea-->
-							<div class="md-form">
-								<textarea type="text" id="form7" class="md-textarea flex-center" name="Info" required="required"></textarea>
-								<label for="form7">Thông Tin Giới Thiệu</label>
-							</div>
-						</div>
-						<div class="col-md-2 col-12">		
-							<div class="md-form" style="padding-top: 44px;">
-								<input type="number" min="0" id="number-bus" class="form-control validate" name="SoXe" required="required">
-								<label for="form91" data-error="wrong" data-success="right">Số Xe Đăng Ký</label>
-							</div>
-						</div>
-					</div>		
-					<div class="col-md-12 text-center md-form wow fadeInUp">
-						<input type="submit" name="submit" value="Đăng Ký" class="btn btn-elegant">
-					</div>
-				</form>
 			</div>
 		</div>
 	</div>	
-
-	<!--Footer-->
+	
 	<footer class="page-footer center-on-small-only mt-4">
 		<!--Copyright-->
 		<div class="footer-copyright">
