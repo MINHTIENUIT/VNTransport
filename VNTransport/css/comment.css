@@ -1,9 +1,12 @@
 .user_name{
 	font-size:14px;
 	font-weight: bold;
+	width: 100px;
 }
 .comments-list .media{
 	border-bottom: 1px dotted #ccc;
+	padding: 30px;
+
 }
 .pb-cmnt-container {
 	font-family: Lato;
