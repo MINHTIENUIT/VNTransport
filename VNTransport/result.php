@@ -17,6 +17,7 @@
 
 	<!-- Material Design Bootstrap -->
 	<link href="css/mdb.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!-- Template styles -->
 	<style rel="stylesheet">
@@ -116,7 +117,7 @@
 	}
 	$NoiDi = "";
 	$NoiDen = "";
-	
+
 	if (isset($_POST["NoiDi"])){
 		$NoiDi = $_POST["NoiDi"];
 	}
@@ -130,28 +131,34 @@
 	if (!$GLOBALS['conn']->set_charset("utf8")) {
 		exit();
 	}	
-	
+
 	$sql = "SELECT * FROM xe WHERE TUYENDI = (SELECT ID FROM tuyendi WHERE DI = (SELECT id FROM diadiem WHERE TINH LIKE \"%$NoiDi%\") AND DEN = (SELECT ID FROM diadiem WHERE TINH LIKE \"%$NoiDen%\"))";
-	$return = $dp->executeQuery($sql);
+		$NoiDi = mysqli_fetch_assoc($dp->executeQuery("SELECT TINH FROM diadiem WHERE TINH LIKE \"%$NoiDi%\""))["TINH"];
+		$NoiDen = mysqli_fetch_assoc($dp->executeQuery("SELECT TINH FROM diadiem WHERE TINH LIKE \"%$NoiDen%\""))["TINH"];
 	$RESULT = array();
+	$return = $dp->executeQuery($sql);
 	if (mysqli_num_rows($return) > 0){
+		$count = 0;
 		while ($row = mysqli_fetch_assoc($return)){
 			$Result = new RESULT;
 			$Result->Gio = $row["GIODI"];
 			$Result->DV = $row["DICHVU"];
 			$Result->Gia = $row["GIA"];
+			$Result->NoiDi = $NoiDi;
+			$Result->NoiDen = $NoiDen;
 			$temp = $row["NHAXE"];
 			$sql = "SELECT NHAXE FROM nhaxe WHERE ID = $temp";
-			$return = $dp->executeQuery($sql);
-			if (mysqli_num_rows($return)){
-				while ($row = mysqli_fetch_assoc($return)) {
-				    $Result->HX = $row["NHAXE"];
+			$returnHX = $dp->executeQuery($sql);
+			if (mysqli_num_rows($returnHX)){
+				while ($row = mysqli_fetch_assoc($returnHX)) {
+					$Result->HX = $row["NHAXE"];
 				}
 			}
 			$RESULT[] = $Result;
+			$count++;
 		}
 	}
- ?>
+?>
 <body>	
 	<!--Navbar-->
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
@@ -270,167 +277,12 @@
 
 	<!-- List Result -->
 	<div class="container">
-		<!--Col 1 -->
-		<div class="row list div-center" style="padding: 5px;">
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<h4><?php echo $RESULT[0]->HX; ?></h4>
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>
-					<h4><strong><?php echo $RESULT[0]->Gio;  ?></strong></h4>
-					<p><?php echo $NoiDi; ?></p>
-				</span>			
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>				
-					<?php echo $RESULT[0]->DV;  ?>	
-				</span>
-
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<div>
-					<p><strong>Đánh Giá</strong></p>
-				</div>
-				<div>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
-					<span class="fa fa-star"></span>
-				</div>
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<span>
-					<h4><?php echo $RESULT[0]->Gia; ?></h4>
-					VNĐ
-				</span>
-			</div>
-			<div class="col-md-2 div-center">
-				<button type="button" class="btn btn-primary">Liên Hệ</button>
-			</div>
-		</div>
-		<!-- Col 2-->
-		<div class="row list div-center" style="padding: 5px;"\>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<h4>Phương Trang</h4>
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>
-					<h4><strong>14h30</strong></h4>
-					<p>Hà Nội</p>
-				</span>			
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>				
-					<p>Giường nằm 45 chỗ</p>
-					<p>Wifi-free</p>	
-				</span>
-
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<div>
-					<p><strong>Đánh Giá</strong></p>
-				</div>
-				<div>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
-					<span class="fa fa-star"></span>
-					<span class="fa fa-star"></span>
-				</div>
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<span>
-					<h4>825000</h4>
-					VNĐ
-				</span>
-			</div>
-			<div class="col-md-2 div-center">
-				<button type="button" class="btn btn-primary">Liên Hệ</button>
-			</div>
-		</div>
-		<!-- Col 3-->
-		<div class="row list div-center" style="padding: 5px;">
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<h4>Hoàng Long</h4>
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>
-					<h4><strong>13h30</strong></h4>
-					<p>Hà Nội</p>
-				</span>			
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>				
-					<p>Giường nằm 45 chỗ</p>
-					<p>Wifi-free</p>	
-				</span>
-
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<div>
-					<p><strong>Đánh Giá</strong></p>
-				</div>
-				<div>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
-				</div>
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<span>
-					<h4>835000</h4>
-					VNĐ
-				</span>
-			</div>
-			<div class="col-md-2 div-center">
-				<button type="button" class="btn btn-primary">Liên Hệ</button>
-			</div>
-		</div>
-		<!-- Col 4-->
-		<div class="row list div-center" style="padding: 5px;">
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<h4>Sao Việt</h4>
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>
-					<h4><strong>15h30</strong></h4>
-					<p>Hà Nội</p>
-				</span>			
-			</div>
-			<div class="col-md-2 div-center" style="text-align: center;">
-				<span>				
-					<p>Giường nằm 45 chỗ</p>
-					<p>Wifi-free</p>	
-				</span>
-
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<div>
-					<p><strong>Đánh Giá</strong></p>
-				</div>
-				<div>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
-					<span class="fa fa-star"></span>
-					<span class="fa fa-star"></span>
-				</div>
-			</div>
-			<div class="col-md-2" style="text-align: center;">
-				<span>
-					<h4>855000</h4>
-					VNĐ
-				</span>
-			</div>
-			<div class="col-md-2 div-center">
-				<button type="button" class="btn btn-primary">Liên Hệ</button>
-			</div>
-		</div>
+		<?php 
+			for ($i = 0; $i < count($RESULT); $i++){
+				echo NewDiv($RESULT[$i]); 
+			};
+		 ?>
 	</div>
-
 	<!-- Thông tin tuyến đường-->
 	<div class="container" style="margin-top: 10px; padding: 5px;">
 		<div class="col-md-12" style="text-align: center; margin-bottom: 10px;">
@@ -559,6 +411,49 @@
 		new WOW().init();
 	</script>
 	<!-- insert info register -->
+	<?php  
+	function NewDiv($result){
+		$div = "<div class=\"row list\" style=\"padding: 5px;\">
+		<div class=\"col-md-2\" style=\"text-align: center; vertical-align: middle;\">			
+				<h4>".$result->HX."</h4>			
+		</div>
+		<div class=\"col-md-2 div-center\" style=\"text-align: center;\">
+		<span>
+		<h4><strong>".$result->Gio."</strong></h4>
+		<p>".$result->NoiDi."</p>
+		</span>			
+		</div>
+		<div class=\"col-md-2 div-center\" style=\"text-align: center;\">
+		<span>"				
+		.$result->DV."
+		</span>
+		</div>
+		<div class=\"col-md-2\" style=\"text-align: center;\">
+		<div>
+		<p><strong>Đánh Giá</strong></p>
+		</div>
+		<div>
+		<span class=\"fa fa-star checked\"></span>
+		<span class=\"fa fa-star checked\"></span>
+		<span class=\"fa fa-star checked\"></span>
+		<span class=\"fa fa-star\"></span>
+		<span class=\"fa fa-star\"></span>
+		</div>
+		</div>
+		<div class=\"col-md-2\" style=\"text-align: center;\">
+		<span>
+		<h4>".$result->Gia."</h4>
+		VNĐ
+		</span>
+		</div>
+		<div class=\"col-md-2 text-center\">
+		<button type=\"button\" class=\"btn btn-primary\">Liên Hệ</button>
+		</div>
+		</div>
+		<br>";			
+		return $div;
+	};	
+	?>
 
 </body>
 
