@@ -1,158 +1,289 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
 	<title>VNTransport</title>
 
-	<meta charset="UTF-8">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<!-- Bootstrap core CSS and javascript-->
-	<link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/docs.min.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 
+	<!-- Material Design Bootstrap -->
+	<link href="css/mdb.min.css" rel="stylesheet">
 
-	<!-- Custom styles for this template -->
-	<link href="css/navbar.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/style_result.css">
+	<!-- Template styles -->
+	<style rel="stylesheet">
+	/* TEMPLATE STYLES */
+	
+	html,
+	body,
+	.view {		
+		height: 25%;
+	}
+	/* Navigation*/
+	
+	.navbar {
+		background-color: transparent;
+	}
+	
+	.scrolling-navbar {
+		-webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+		-moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+		transition: background .5s ease-in-out, padding .5s ease-in-out;
+	}
+	
+	.top-nav-collapse {
+		background-color: #26637F;
+	}
+	
+	footer.page-footer {
+		background-color: #26637F;
+		margin-top: -1px;
+	}
+	
+	@media only screen and (max-width: 768px) {
+		.navbar {
+			background-color: #26637F;
+		}
+	}
+	.navbar .btn-group .dropdown-menu a:hover {
+		color: #000 !important;
+	}
+	.navbar .btn-group .dropdown-menu a:active {
+		color: #fff !important;
+	}
+	/*Call to action*/
+	
+	.flex-center {
+		color: #fff;
+	}
+	
+	.view {
+		background: url("img/travel_tourism_hd1.gif")no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
 
-	<!-- fontawesome.io -->
-	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
-	<!-- DatePicker -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
-	<!-- Include rating-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/ratingstat.css">
+	.md-form label {
+		color: #f8f9fa;
+	}
+
+	.form-control {
+		color: #f8f9fa;
+	}
+
+	.form-control:focus {
+		color: #f8f9fa;
+	}
+
+	.hm-black-strong .full-bg-img{
+		background-color: rgba(19,16,16,0.7);
+	}
+
+	.color-black {
+		color: black;
+	}
+
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		margin: 0; 
+	}
+
+</style>
 
 </head>
-<body>
+<?php 
+	include 'data_access_helper.php';
+	class RESULT{
+		var $HX;
+		var $Gio;
+		var $Gia;		
+		var $DV;
+		var $NoiDi;
+		var $NoiDen;
+	}
+	$NoiDi = "";
+	$NoiDen = "";
+	
+	if (isset($_POST["NoiDi"])){
+		$NoiDi = $_POST["NoiDi"];
+	}
 
-	<!-- Navigation Bar -->
-	<header class="navbar navbar-light navbar-toggleable-md bd-navbar" style="margin-bottom: 0px">
-		<nav class="container w-100">
+	if (isset($_POST["NoiDen"])){
+		$NoiDen = $_POST["NoiDen"];
+	}
 
-			<div class="d-flex justify-content-between">
-				<a class="navbar-brand" href="/">
-					VNTransport
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-			</div>
-
-			<div class="collapse navbar-collapse" id="bd-main-nav">
-				<ul class="nav navbar-nav ml-auto">
+	$dp = new DataAccessHelper;
+	$dp->connect();
+	if (!$GLOBALS['conn']->set_charset("utf8")) {
+		exit();
+	}	
+	
+	$sql = "SELECT * FROM xe WHERE TUYENDI = (SELECT ID FROM tuyendi WHERE DI = (SELECT id FROM diadiem WHERE TINH LIKE \"%$NoiDi%\") AND DEN = (SELECT ID FROM diadiem WHERE TINH LIKE \"%$NoiDen%\"))";
+	$return = $dp->executeQuery($sql);
+	$RESULT = array();
+	if (mysqli_num_rows($return) > 0){
+		while ($row = mysqli_fetch_assoc($return)){
+			$Result = new RESULT;
+			$Result->Gio = $row["GIODI"];
+			$Result->DV = $row["DICHVU"];
+			$Result->Gia = $row["GIA"];
+			$temp = $row["NHAXE"];
+			$sql = "SELECT NHAXE FROM nhaxe WHERE ID = $temp";
+			$return = $dp->executeQuery($sql);
+			if (mysqli_num_rows($return)){
+				while ($row = mysqli_fetch_assoc($return)) {
+				    $Result->HX = $row["NHAXE"];
+				}
+			}
+			$RESULT[] = $Result;
+		}
+	}
+ ?>
+<body>	
+	<!--Navbar-->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="#">VNTransport</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-item nav-link active" href="#" onclick="">Trang Chủ</a>
+						<a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-item nav-link " href="#" onclick="">Tin Tức</a>
+						<a class="nav-link" href="#">Tin tức</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-item nav-link " href="#" onclick="">Liên Hệ</a>
+						<a class="nav-link" href="#">Liên hệ</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-item nav-link" href="#" onclick="">Đăng Nhập</a>
+						<a class="nav-link" href="#">Đăng nhập</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-item nav-link" href="#" onclick="">Đăng Kí</a>
+						<a class="nav-link" href="#">Đăng kí</a>
 					</li>
 				</ul>
 			</div>
-		</nav>
-	</header>
-	<!-- Navigation Bar End -->
-
-	<main class="bd-masthead" id="content" style="padding: 48px;">
-		<div>
-			<form class="bootstrap-frm background">
-				<div class="row div-center">
-
-					<div class="col-md-3 div-center" style="padding: 8px;">
-						<i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: #fff; margin-right: 3px;"></i>
-						<input id="" type="text" placeholder="Nhập nơi đi" />
-					</div>	
-
-					<div class="col-md-3 div-center" style="padding: 8px;">
-						<i class="fa fa-arrow-right fa-2x" aria-hidden="true" style="color: #fff; margin-right: 3px;"></i>
-						<input id="" type="text" placeholder="Nhập nơi đến" />
-					</div>	
-
-
-					<div class="col-md-3 div-center" style="padding: 8px;">
-						<i class="fa fa-calendar-o fa-2x" aria-hidden="true" style="color: #fff;margin-right: 3px;"></i>
-						<input class="form-control" id="date" name="date" placeholder="Chọn một ngày" type="text"/>
-					</div>
-
-					<div class="col-md-3 div-center" style="padding: 8px;">
-						<button type="button" class="btn btn-default button" aria-label="Left Align" style="margin-left: 64px;">
-							Tìm vé xe
-							<span class="fa fa-car" aria-hidden="true"></span>
-						</button>
-					</div>
-				</div> 
-			</form>
 		</div>
-	</main>
+	</nav>
+	<!-- Navigation Bar End -->
+	<div class="">
+		<div class="view flex-center container-fluid">
+			<div class="row" style="padding-top: 100px;">
+				<ul>
+					<li>
+						<div class="wow fadeIn" data-wow-delay="0.4s">
+							<form action="result.php" method="POST">
+								<div class="row container-fluid">
+									<div class="col-md-3">
+										<div class="md-form">
+											<input type="text" id="form1" class="form-control validate" name="NoiDi">
+											<label for="form1">Nơi đi</label>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="md-form">
+											<input type="text" id="form2" class="form-control validate" name="NoiDen">
+											<label for="form2">Nơi đến</label>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="md-form">
+											<input type="text" id="form3" class="form-control validate" name="NgayDi">
+											<label for="form3">Ngày đi</label>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="md-form">
+											<button class="btn btn-lg btn-dark-green">Tìm vé</button>
+										</div>
+									</div>
+								</div>                            
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 	<!--Bar short-->
-	<div class="container-fluid row" style="background-color: #EFEFEF; margin-top: 16px; margin-bottom: 16px;">		
-		<div class="row col-md-6 div-center" style="text-align: center;">
-			<div class="div-center col-md-5 col-sm-12">
-				<h5>Hà Nội</h5>
+	<div class="container-fluid" style="background-color: #5D747F; margin-top: 16px; margin-bottom: 16px;">		
+		<div class="row text-center">
+			<div class="row col-md-6" style="padding-top: 10px;">
+				<div class="col-md-5 col-sm-12">
+					<span>
+						<h5><b><?php echo $NoiDi;  ?></b></h5>
+					</span>				
+				</div>
+				<div class="col-md-2">
+					<i class="fa fa-exchange fa-2x"></i>
+				</div>
+				<div class="col-md-5">
+					<span>
+						<h5><b><?php echo $NoiDen;  ?></b></h5>	
+					</span>				
+				</div>
 			</div>
-			<div class="div-center col-md-2">
-				<i class="fa fa-exchange fa-2x"></i>
-			</div>
-			<div class="div-center col-md-5">
-				<h5>Hồ Chí Minh</h5>
-			</div>
-		</div>
 
-		<div class="row col-md-6 col-sm-12">
-			<div class="div-center col-md-4 col-sm-4" style="padding: 8px;">
-				Giờ đi:
-				<select>
-					<option>Không</option>
-					<option>Tăng dần</option>
-					<option>Giảm dần</option>
-				</select>					
-			</div>		
-			<div class="div-center col-md-4 col-sm-4" style="padding: 8px;">
-				Giá vé:
-				<select>
-					<option>Không</option>
-					<option>Tăng dần</option>
-					<option>Giảm dần</option>
-				</select>
-			</div>	
-			<div class="div-center col-md-4 col-sm-4" style="padding: 8px;">
-				Đánh giá:
-				<select>
-					<option>Không</option>
-					<option>Tăng dần</option>
-					<option>Giảm dần</option>
-				</select>
-			</div>	
-		</div>					
+			<div class="row col-md-6 col-sm-12">
+				<div class="col-md-4 col-sm-4" style="padding: 8px;">
+					Giờ đi:
+					<select>
+						<option>Tăng dần</option>
+						<option>Giảm dần</option>
+					</select>					
+				</div>		
+				<div class="col-md-4 col-sm-4" style="padding: 8px;">
+					Giá vé:
+					<select>
+						<option>Tăng dần</option>
+						<option>Giảm dần</option>
+					</select>
+				</div>	
+				<div class="col-md-4 col-sm-4" style="padding: 8px;">
+					Đánh giá:
+					<select>
+						<option>Tăng dần</option>
+						<option>Giảm dần</option>
+					</select>
+				</div>	
+			</div>					
+		</div>	
 	</div>
+
 
 	<!-- List Result -->
 	<div class="container">
 		<!--Col 1 -->
 		<div class="row list div-center" style="padding: 5px;">
 			<div class="col-md-2 div-center" style="text-align: center;">
-				<h4>Mai Linh</h4>
+				<h4><?php echo $RESULT[0]->HX; ?></h4>
 			</div>
 			<div class="col-md-2 div-center" style="text-align: center;">
 				<span>
-					<h4><strong>14h30</strong></h4>
-					<p>Hà Nội</p>
+					<h4><strong><?php echo $RESULT[0]->Gio;  ?></strong></h4>
+					<p><?php echo $NoiDi; ?></p>
 				</span>			
 			</div>
 			<div class="col-md-2 div-center" style="text-align: center;">
 				<span>				
-					<p>Giường nằm 40 chỗ</p>
-					<p>Wifi-free</p>	
+					<?php echo $RESULT[0]->DV;  ?>	
 				</span>
 
 			</div>
@@ -170,7 +301,7 @@
 			</div>
 			<div class="col-md-2" style="text-align: center;">
 				<span>
-					<h4>825000</h4>
+					<h4><?php echo $RESULT[0]->Gia; ?></h4>
 					VNĐ
 				</span>
 			</div>
@@ -394,50 +525,41 @@
 	</div>
 
 
-	<!-- Footer -->
-	<footer class="bd-footer text-muted">
-	<footer class="container-fluid">
-		<div class="row" style="background-color: #26637f; color: white;">
-			<div class="col-md-12 div-center" style="font-weight: bold;">
-				<span style="padding: 5px;">Bùi Hữu Phước</span>
-				<span style="padding: 5px;">Văn Minh Tiến</span>
-				<span style="padding: 5px;">Huỳnh Hữu Lợi</span>
-			</div>
-			<div class="col-md-12 div-center" style="padding: 5px;">
-				© 2017 Copyright: &nbsp;<a style="color: white;" href="http://www.uit.edu.vn"> uit.edu.vn </a>
+	<!--Footer-->
+	<footer class="page-footer center-on-small-only mt-4">
+		<!--Copyright-->
+		<div class="footer-copyright">
+			<div class="container-fluid">
+				© 2017 Copyright: <a href="#"> UIT.edu.vn </a>
+
 			</div>
 		</div>
+		<!--/.Copyright-->
+
 	</footer>
-	<!-- Footer End -->
+	<!--/.Footer-->
 
-    <!-- Bootstrap core JavaScript
-    	================================================== -->
-    	<!-- Placed at the end of the document so the pages load faster -->
-    	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    	<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    	<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    	<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-    	<!-- Include jQuery -->
-    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    	<!-- Include DatePicker -->
-    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+	<!-- SCRIPTS -->
 
-    	<script>
-    		$(document).ready(function(){
-				var date_input=$('input[name="date"]'); //our date input has the name "date"
-				var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-				date_input.datepicker({
-					format: 'dd/mm/yyyy',
-					container: container,
-					todayHighlight: true,
-					autoclose: true,
-				})
-			})
-		</script>
+	<!-- JQuery -->
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 
-	</body>
-	</html>
+	<!-- Bootstrap dropdown -->
+	<script type="text/javascript" src="js/popper.min.js"></script>
+
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="js/mdb.min.js"></script>
+
+	<!-- Animations init-->
+	<script>
+		new WOW().init();
+	</script>
+	<!-- insert info register -->
+
+</body>
+
+</html>
