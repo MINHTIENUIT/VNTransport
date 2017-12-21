@@ -117,3 +117,12 @@
   background: #444;
   text-shadow: 0 1px rgba(0, 0, 0, 0.4);
 }
+
+.display{
+    display: table;
+}
+.verticalcenter{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+}
