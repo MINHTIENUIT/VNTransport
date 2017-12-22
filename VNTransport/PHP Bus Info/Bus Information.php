@@ -34,6 +34,7 @@ $temp = 1;
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>	
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<link rel="stylesheet" type="text/css" href="css/comment.css">
+	<link rel="stylesheet" type="text/css" href="css/signup.css">
 	<style type="text/css">
 	
 	.navbar.navbar-light .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
@@ -116,7 +117,34 @@ $temp = 1;
 						<a class="nav-link" href="#">Liên hệ</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Đăng kí</a>
+						<!-- Button to open the modal -->
+						<a class="nav-link" href="#" onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Đăng kí</a>						
+
+						<!-- The Modal (contains the Sign Up form) -->
+						<div id="signup" class="modalsignup" style="overflow: hidden;">
+							<div class="col-8" style="margin-right:auto; margin-left:auto;">	
+								<form class="modalsignup-content animatelogin" action="/action_page.php">
+									<div class="container">
+										<div class="imgcontainer">
+											<img src="img/login.png" alt="Avatar" class="avatar">
+										</div>
+										<label><b>Email</b></label>
+										<input type="text" placeholder="Enter Email" name="email" required>
+
+										<label><b>Password</b></label>
+										<input type="password" placeholder="Enter Password" name="psw" required>
+
+										<label><b>Repeat Password</b></label>
+										<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+										<div class="clearfix">
+											<button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
+											<button type="submit" class="signupbtn">Sign Up</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
 					</li>
 
 					<li class="nav-item">
@@ -130,12 +158,9 @@ $temp = 1;
 						
 						<!-- The Modal -->
 						<div id="login" class="modallogin" style="overflow: hidden;">
-							<span onclick="document.getElementById('login').style.display='none'" 
-							class="closelogin" title="Close Modal">&times;</span>
-
 							<!-- Modal Content -->
 							<div class="col-8" style="margin-right:auto; margin-left:auto;">							
-								<form class="modallogin-content animatelogin" method="POST" action="check.php">
+								<form class="modallogin-content animatelogin" action="check.php" method="POST">
 									<div class="imgcontainer">
 										<img src="img/login.png" alt="Avatar" class="avatar">
 									</div>
@@ -143,16 +168,16 @@ $temp = 1;
 									<div class="container">
 										<div style="margin-bottom: 5px;">
 											<label style="margin: 0px;"><b>Username</b></label>
-											<input type="text" placeholder="Enter Username" name="user" required>
+											<input id="username" type="text" placeholder="Enter Username" name="user" required>
 										</div>
 										
 										<div>
 											<label style="margin: 0px;"><b>Password</b></label>
-											<input type="password" placeholder="Enter Password" name="pass" required>
+											<input id="password" type="password" placeholder="Enter Password" name="pass" required>
 										</div>
-										
+										<h1 id="erro"></h1>
 
-										<button type="submit">Login</button>
+										<button id="submit" type="submit" onclick="showHint(username.value,password.value)" >Login</button>
 										
 									</div>
 
@@ -161,6 +186,7 @@ $temp = 1;
 										<span class="psw">Forgot <a href="#" style="top: 6px;">password?</a></span>
 									</div>
 								</form>
+
 							</div>							
 						</div>
 						<?php }; ?>
@@ -341,60 +367,15 @@ $temp = 1;
 				</div> 
 				<div class="comments-list">
 					<div class="media">
-						<p class="pull-right"><small>5 days ago</small></p>
-						<a class="media-left" href="#">
-							<img src="http://lorempixel.com/40/40/people/1/">
-						</a>
-						<div class="media-body">
-
+						<img class="media-left" src="img/login.png" alt="Avatar">
+						<div class="media-body" style="padding: 10px;">
 							<h4 class="media-heading user_name">Baltej Singh</h4>
 							Wow! this is really great.
-
-							<p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-						</div>
-					</div>
-					<div class="media">
-						<p class="pull-right"><small>5 days ago</small></p>
-						<a class="media-left" href="#">
-							<img src="http://lorempixel.com/40/40/people/2/">
-						</a>
-						<div class="media-body">
-
-							<h4 class="media-heading user_name">Baltej Singh</h4>
-							Wow! this is really great.
-
-							<p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-						</div>
-					</div>
-					<div class="media">
-						<p class="pull-right"><small>5 days ago</small></p>
-						<a class="media-left" href="#">
-							<img src="http://lorempixel.com/40/40/people/3/">
-						</a>
-						<div class="media-body">
-
-							<h4 class="media-heading user_name">Baltej Singh</h4>
-							Wow! this is really great.
-
-							<p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-						</div>
-					</div>
-					<div class="media">
-						<p class="pull-right"><small>5 days ago</small></p>
-						<a class="media-left" href="#">
-							<img src="http://lorempixel.com/40/40/people/4/">
-						</a>
-						<div class="media-body">
-
-							<h4 class="media-heading user_name">Baltej Singh</h4>
-							Wow! this is really great.
-
-							<p><small><a href="">Like</a> - <a href="">Share</a></small></p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-12 col-md-offset-3">
 				<div class="panel panel-info">
 					<div class="panel-body">
 						<textarea placeholder="Write your comment here!" class="pb-cmnt-textarea"></textarea>
@@ -446,7 +427,8 @@ $temp = 1;
     	<script type="text/javascript" src="js/login.js"></script>
     	<!-- Include DatePicker -->
     	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-    	<script type="text/javascript" src="js/logout.js"></script>
+    	<script type="text/javascript" src="js/logout.js"></script>\
+    	<script type="text/javascript" src="js/signup.js"></script>
     	<script>
     		$(document).ready(function(){
 				var date_input=$('button[name="date"]'); //our date input has the name "date"
