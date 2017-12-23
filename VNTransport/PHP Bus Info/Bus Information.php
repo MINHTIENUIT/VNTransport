@@ -1,15 +1,18 @@
 <?php 
 include 'Connect.php';
 $email = 'hoanglong@gmail.com';
-$result = mysqli_query($con,"SELECT * FROM businfo WHERE Email='$email'");
-$result1 = mysqli_query($con,"SELECT * FROM pricetable WHERE Email='$email'");
-$result2 = mysqli_query($con,"SELECT * FROM imagin WHERE ID=1");
-$result3 = mysqli_query($con,"SELECT * FROM imagin WHERE Email='$email' AND ID >= 2");
-$img = mysqli_fetch_object($result2);
+$result_info = mysqli_query($con,"SELECT * FROM businfo WHERE Email='$email'");
+$result_price = mysqli_query($con,"SELECT * FROM pricetable WHERE Email='$email'");
+$result_carousel_start = mysqli_query($con,"SELECT * FROM imagin WHERE ID=1");
+$result_carousel = mysqli_query($con,"SELECT * FROM imagin WHERE Email='$email' AND ID >= 2");
+$result_cmt = mysqli_query($con,"SELECT * FROM cmt");
+$img = mysqli_fetch_object($result_carousel_start);
 
-$count = mysqli_query($con,"SELECT COUNT(*) as count FROM imagin;");
-$row = mysqli_fetch_object($result);
+$count_carousel = mysqli_query($con,"SELECT COUNT(*) as count FROM imagin;");
+$info = mysqli_fetch_object($result_info);
 $temp = 1;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -210,24 +213,24 @@ $temp = 1;
 				</div>          
 
 				<div class="col-sm-4">
-					<img class="logo col-sm-12" src="<?php echo $row->Logo ?>" style="margin:auto; margin-top: 50px; margin-bottom: 20px;" align="left">
+					<img class="logo col-sm-12" src="<?php echo $info->Logo ?>" style="margin:auto; margin-top: 50px; margin-bottom: 20px;" align="left">
 				</div>            
 
 				<div class="row infomation col-sm-8" style="font-size: 150%;">
 					<hr>
 					<div class="col-xs-12 col-sm-12 col-md-3">Tên nhà xe:</div>
 					
-					<div class="col-xs-12 col-sm-12 col-md-9"> <?php echo $row->BusName; ?> </div>
+					<div class="col-xs-12 col-sm-12 col-md-9"> <?php echo $info->BusName; ?> </div>
 					<hr>	
 
 					<hr>
 					<div class="col-xs-12 col-sm-12 col-md-3">Tên chủ xe:</div>
-					<div class="col-xs-12 col-sm-12 col-md-9"><?php echo $row->OwnerName; ?></div>
+					<div class="col-xs-12 col-sm-12 col-md-9"><?php echo $info->OwnerName; ?></div>
 					<hr>
 
 					<hr>
 					<div class="col-xs-12 col-sm-12 col-md-3">Dịch vụ:</div>
-					<div class="col-xs-12 col-sm-12 col-md-9"><?php echo $row->Service; ?></div>
+					<div class="col-xs-12 col-sm-12 col-md-9"><?php echo $info->Service; ?></div>
 					<hr>
 
 					<hr>
@@ -237,10 +240,10 @@ $temp = 1;
 						
 						<?php for ($i=1; $i <= 5; $i++) { ?>
 
-						<?php if ($i <= $row->Rating) { ?>
+						<?php if ($i <= $info->Rating) { ?>
 						<span class="fa fa-star checked"></span>
 						<?php } ?>
-						<?php if ($i > $row->Rating) { ?>
+						<?php if ($i > $info->Rating) { ?>
 						<span class="fa fa-star"></span>
 						<?php } ?>
 						<?php } ?>				
@@ -257,7 +260,7 @@ $temp = 1;
 				<!--Indicators-->
 				<ol class="carousel-indicators">					
 					<li data-target="#carousel-example-1z" data-slide-to="1" class="active"></li>
-					<?php $dem = mysqli_fetch_object($count); ?>
+					<?php $dem = mysqli_fetch_object($count_carousel); ?>
 					<?php while($temp <= $dem->count - 1){ ?>					
 					<li data-target="#carousel-example-1z" data-slide-to="<?php echo $temp ?>"></li>
 					<?php $temp++ ?>
@@ -271,7 +274,7 @@ $temp = 1;
 						<img class="d-block w-100" style="width:700px;height:500px;" src="<?php echo $img->Url; ?>">
 					</div>
 					
-					<?php while($img2 = mysqli_fetch_object($result3)){ ?>
+					<?php while($img2 = mysqli_fetch_object($result_carousel)){ ?>
 					<!--First slide-->					
 					<div class="carousel-item ">						
 						<img class="d-block w-100" style="width:700px;height:500px;" src="<?php echo $img2->Url; ?>">
@@ -299,7 +302,7 @@ $temp = 1;
 		<script src="vendor/transport.js"></script>
 		<hr>                  
 		<hr>		
-		<div class="col-11" style="margin: auto; font-size: 150%;"> <?php echo $row->Info; ?> </div>
+		<div class="col-11" style="margin: auto; font-size: 150%;"> <?php echo $info->Info; ?> </div>
 		<hr>              
 		<div class="container">
 			<div class="row">      
@@ -327,7 +330,7 @@ $temp = 1;
 									<th>Giá vé</th>									
 								</tr>
 							</thead>
-							<?php while($product = mysqli_fetch_object($result1)){ ?>
+							<?php while($product = mysqli_fetch_object($result_price)){ ?>
 							<tbody>
 								
 								<tr>
@@ -366,21 +369,33 @@ $temp = 1;
 					<h1><small class="pull-right">45 comments</small> Comments </h1>
 				</div> 
 				<div class="comments-list">
+					<?php while($cmt = mysqli_fetch_object($result_cmt)){ ?>
 					<div class="media">
+						<?php if($cmt->urlimg == ''){ ?>
 						<img class="media-left" src="img/login.png" alt="Avatar">
+						<?php } ?>
+						<?php if($cmt->urlimg != ''){ ?>
+						<img class="media-left" src="<?php echo $cmt->urlimg ?>" alt="Avatar">
+						<?php } ?>						
 						<div class="media-body" style="padding: 10px;">
-							<h4 class="media-heading user_name">Baltej Singh</h4>
-							Wow! this is really great.
+							<h1 class="media-heading user_name"><?php echo $cmt->username ?></h1>
+							<?php echo $cmt->content ?>
 						</div>
 					</div>
+					<?php } ?>
 				</div>
 			</div>
 			<div class="col-md-12 col-md-offset-3">
 				<div class="panel panel-info">
 					<div class="panel-body">
-						<textarea placeholder="Write your comment here!" class="pb-cmnt-textarea"></textarea>
-						<form class="form-inline">
-							<button class="btn btn-primary pull-right" type="button" style="width: 20%">Share</button>
+						<form class="form-inline" method="POST" action="cmt.php">
+							<textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="cmt"></textarea>
+							<?php if(!isset($_COOKIE['username'])) { ?>
+							<button class="btn btn-primary pull-right" type="button" style="width: 40%" onclick="document.getElementById('login').style.display='block'">Vui lòng đăng nhập để bình luận</button>
+							<?php }; ?>
+							<?php if(isset($_COOKIE['username'])) { ?>					
+							<button class="btn btn-primary pull-right" type="submit" style="width: 20%">Bình Luận</button>
+							<?php } ?>
 						</form>
 					</div>
 				</div>
