@@ -5,13 +5,14 @@ $result_info = mysqli_query($con,"SELECT * FROM businfo WHERE Email='$email'");
 $result_price = mysqli_query($con,"SELECT * FROM pricetable WHERE Email='$email'");
 $result_carousel_start = mysqli_query($con,"SELECT * FROM imagin WHERE ID=1");
 $result_carousel = mysqli_query($con,"SELECT * FROM imagin WHERE Email='$email' AND ID >= 2");
-$result_cmt = mysqli_query($con,"SELECT * FROM cmt");
+$result_cmt = mysqli_query($con,"SELECT * FROM cmt,login WHERE cmt.username = login.username");
+
 $img = mysqli_fetch_object($result_carousel_start);
 
-$count_carousel = mysqli_query($con,"SELECT COUNT(*) as count FROM imagin;");
+$count_carousel = mysqli_query($con,"SELECT COUNT(*) as count_carousel FROM imagin;");
+$count_cmt = mysqli_query($con,"SELECT COUNT(*) as count_cmt FROM cmt;");
 $info = mysqli_fetch_object($result_info);
 $temp = 1;
-
 
 ?>
 
@@ -38,6 +39,7 @@ $temp = 1;
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 	<link rel="stylesheet" type="text/css" href="css/comment.css">
 	<link rel="stylesheet" type="text/css" href="css/signup.css">
+	<link rel="stylesheet" type="text/css" href="css/dropdown.css">
 	<style type="text/css">
 	
 	.navbar.navbar-light .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
@@ -95,6 +97,14 @@ $temp = 1;
 		padding: 8px;
 	}
 
+	.dropitem:hover{
+		background-color: #a89c9c;
+	}
+
+	li:hover{
+		background-color: #a89c9c;
+	}
+
 </style>
 </head>
 </head>
@@ -110,91 +120,93 @@ $temp = 1;
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">Trang chủ<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Tin tức</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Liên hệ</a>
-					</li>
-					<li class="nav-item">
-						<!-- Button to open the modal -->
-						<a class="nav-link" href="#" onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Đăng kí</a>						
+					
+					<a class="nav-link" href="#">Trang chủ<span class="sr-only">(current)</span></a>
+					
+					<a class="nav-link" href="#">Tin tức</a>					
+					
+					<a class="nav-link" href="#">Liên hệ</a>
 
-						<!-- The Modal (contains the Sign Up form) -->
-						<div id="signup" class="modalsignup" style="overflow: hidden;">
-							<div class="col-8" style="margin-right:auto; margin-left:auto;">	
-								<form class="modalsignup-content animatelogin" action="/action_page.php">
-									<div class="container">
-										<div class="imgcontainer">
-											<img src="img/login.png" alt="Avatar" class="avatar">
-										</div>
-										<label><b>Email</b></label>
-										<input type="text" placeholder="Enter Email" name="email" required>
+					<div class="dropdown">							
+						<a class="nav-link" style="width:auto;" data-toggle="dropdown">Khánh hàng</a>
+						<ul class="dropdown-menu">
+							<li>
+								<!-- Button to open the modal -->
+								<a class="dropitem" onclick="document.getElementById('signup').style.display='block'" style="width:auto;">Đăng kí</a>	
+							</li>
+							<li>
+								<!-- Button to open the modal -->
+								<?php if(isset($_COOKIE['username'])) { ?>
+								<a id="logout" class="dropitem" href="#">Đăng Xuất</a>
+								<?php }; ?>
 
-										<label><b>Password</b></label>
-										<input type="password" placeholder="Enter Password" name="psw" required>
+								<?php if(!isset($_COOKIE['username'])) { ?>
+								<!-- Button to open the modal login form -->
+								<a class="dropitem" href="#" onclick="document.getElementById('login').style.display='block'">Đăng nhập</a>
+							</li>
+						</ul>
+					</div>
 
-										<label><b>Repeat Password</b></label>
-										<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-										<div class="clearfix">
-											<button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
-											<button type="submit" class="signupbtn">Sign Up</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</li>
-
-					<li class="nav-item">
-						<?php if(isset($_COOKIE['username'])) { ?>
-						<a id="logout" class="nav-link" href="#">Đăng Xuất</a>
-						<?php }; ?>
-
-						<?php if(!isset($_COOKIE['username'])) { ?>
-						<!-- Button to open the modal login form -->
-						<a class="nav-link" href="#" onclick="document.getElementById('login').style.display='block'">Đăng nhập</a>						
-						
-						<!-- The Modal -->
-						<div id="login" class="modallogin" style="overflow: hidden;">
-							<!-- Modal Content -->
-							<div class="col-8" style="margin-right:auto; margin-left:auto;">							
-								<form class="modallogin-content animatelogin" action="check.php" method="POST">
+					<!-- The Modal (contains the Sign Up form) -->
+					<div id="signup" class="modalsignup" style="overflow: hidden;">
+						<div class="col-8" style="margin-right:auto; margin-left:auto;">	
+							<form class="modalsignup-content animatelogin">
+								<div class="container">
 									<div class="imgcontainer">
 										<img src="img/login.png" alt="Avatar" class="avatar">
 									</div>
+									<label><b>Email</b></label>
+									<input type="text" placeholder="Enter Email" name="email" required>
 
-									<div class="container">
-										<div style="margin-bottom: 5px;">
-											<label style="margin: 0px;"><b>Username</b></label>
-											<input id="username" type="text" placeholder="Enter Username" name="user" required>
-										</div>
-										
-										<div>
-											<label style="margin: 0px;"><b>Password</b></label>
-											<input id="password" type="password" placeholder="Enter Password" name="pass" required>
-										</div>
-										<h1 id="erro"></h1>
+									<label><b>Password</b></label>
+									<input type="password" placeholder="Enter Password" name="psw" required>
 
-										<button id="submit" type="submit" onclick="showHint(username.value,password.value)" >Login</button>
-										
-									</div>
+									<label><b>Repeat Password</b></label>
+									<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-									<div class="container" style="background-color:#f1f1f1">
-										<button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
-										<span class="psw">Forgot <a href="#" style="top: 6px;">password?</a></span>
-									</div>
-								</form>
-
-							</div>							
+									<div class="clearfix">
+										<button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
+										<button type="submit" class="signupbtn">Sign Up</button>
+									</div>										
+								</div>
+							</form>
 						</div>
-						<?php }; ?>
-					</li>
-					
+					</div>
+
+
+
+					<!-- The Modal -->
+					<div id="login" class="modallogin" style="overflow: hidden;">
+						<!-- Modal Content -->
+						<div class="col-8" style="margin-right:auto; margin-left:auto;">							
+							<form class="modallogin-content animatelogin" action="check.php" method="POST">
+								<div class="imgcontainer">
+									<img src="img/login.png" alt="Avatar" class="avatar">
+								</div>
+
+								<div class="container">
+									<div style="margin-bottom: 5px;">
+										<label style="margin: 0px;"><b>Username</b></label>
+										<input id="username" type="text" placeholder="Enter Username" name="user" required>
+									</div>
+
+									<div>
+										<label style="margin: 0px;"><b>Password</b></label>
+										<input id="password" type="password" placeholder="Enter Password" name="pass" required>
+									</div>
+									<h1 id="erro"></h1>
+
+									<button id="submit" type="submit" onclick="showHint(username.value,password.value)" >Login</button>					
+								</div>
+								<div class="container" style="background-color:#f1f1f1">
+									<button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
+									<span class="psw">Forgot <a href="#" style="top: 6px;">password?</a></span>
+								</div>
+							</form>
+						</div>							
+					</div>
+					<?php }; ?>
+
 				</ul>
 			</div>
 		</nav>
@@ -261,7 +273,7 @@ $temp = 1;
 				<ol class="carousel-indicators">					
 					<li data-target="#carousel-example-1z" data-slide-to="1" class="active"></li>
 					<?php $dem = mysqli_fetch_object($count_carousel); ?>
-					<?php while($temp <= $dem->count - 1){ ?>					
+					<?php while($temp <= $dem->count_carousel - 1){ ?>					
 					<li data-target="#carousel-example-1z" data-slide-to="<?php echo $temp ?>"></li>
 					<?php $temp++ ?>
 					<?php } ?>
@@ -296,10 +308,6 @@ $temp = 1;
 			</div>
 		</div>		
 		<!--/.Carousel Wrapper-->
-
-
-
-		<script src="vendor/transport.js"></script>
 		<hr>                  
 		<hr>		
 		<div class="col-11" style="margin: auto; font-size: 150%;"> <?php echo $info->Info; ?> </div>
@@ -359,16 +367,20 @@ $temp = 1;
 		</div>
 		<hr>
 	</div>
-	
+
+
+
 
 	<!-- Comment Box -->
 	<div class="container">
 		<div class="row">
 			<div class="col-10">
 				<div class="page-header">
-					<h1><small class="pull-right">45 comments</small> Comments </h1>
+					<?php $dem2 = mysqli_fetch_object($count_cmt);?>
+					<h1><small class="pull-right"><?php echo $dem2->count_cmt ?> comments</small> Comments </h1>
 				</div> 
 				<div class="comments-list">
+
 					<?php while($cmt = mysqli_fetch_object($result_cmt)){ ?>
 					<div class="media">
 						<?php if($cmt->urlimg == ''){ ?>
@@ -427,7 +439,6 @@ $temp = 1;
     	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     	<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    	<script type="text/javascript" src="js/index.js"></script>
     	<!-- JQuery -->
     	<script type="text/javascript" src="mdb/js/jquery-3.2.1.min.js"></script>
     	<!-- Bootstrap tooltips -->
@@ -437,13 +448,16 @@ $temp = 1;
     	<!-- MDB core JavaScript -->
     	<script type="text/javascript" src="mdb/js/mdb.min.js"></script>
     	<script type="text/javascript" src="js/pricetable.js"></script>
-    	<script type="text/javascript" src="datepicker.js"></script>
+    	<script type="text/javascript" src="js/datepicker.js"></script>
     	<!-- Login Form -->
     	<script type="text/javascript" src="js/login.js"></script>
+    	<script type="text/javascript" src="js/logout.js"></script>
+    	<script type="text/javascript" src="js/signup.js"></script>
     	<!-- Include DatePicker -->
     	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-    	<script type="text/javascript" src="js/logout.js"></script>\
-    	<script type="text/javascript" src="js/signup.js"></script>
+    	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     	<script>
     		$(document).ready(function(){
 				var date_input=$('button[name="date"]'); //our date input has the name "date"
