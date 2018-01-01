@@ -11,11 +11,11 @@ if(mysqli_num_rows($resultlogin) > 0){
 	setcookie("username", $username);
 	echo "Welcom!!!!!";
 	echo "<script>alert('welcom!')</script>";
-	echo "<script>window.location='Bus Information.php'</script>";
+	echo "<script>window.location='BusInformation.php'</script>";
 }
 else {
 	echo "Error!!!!!!";
 	echo "<script>alert('Wrong Username or Password please try again!')</script>";
-	echo "<script>window.location='Bus Information.php'</script>";
+	echo "<script>window.location='BusInformation.php'</script>";
 }
 ?>

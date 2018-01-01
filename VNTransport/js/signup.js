@@ -6,4 +6,3 @@ window.onclick = function(event) {
         signup.style.display = "none";
     }
 }
-

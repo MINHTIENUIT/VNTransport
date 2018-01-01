@@ -65,6 +65,7 @@ span.psw {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    
 }
 
 /* Modal Content/Box */
@@ -75,21 +76,6 @@ span.psw {
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button (x) */
-.closelogin {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.closelogin:hover,
-.closelogin:focus {
-    color: red;
-    cursor: pointer;
-}
 
 /* Add Zoom Animation */
 .animatelogin {
