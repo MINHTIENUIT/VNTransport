@@ -293,3 +293,11 @@ label.star:before {
 .contact:hover {
   background-color: #0040a8;
 }
+
+.centered {
+  position: fixed;
+  
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%);
+}

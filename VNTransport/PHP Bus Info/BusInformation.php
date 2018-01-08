@@ -1,10 +1,10 @@
 <?php 
 include 'Connect.php';
-$email = 'hoanglong@gmail.com';
-$result_info = mysqli_query($con,"SELECT * FROM businfo WHERE Email='$email'");
-$result_price = mysqli_query($con,"SELECT * FROM pricetable WHERE Email='$email'");
+$BusName = 'hoang long';
+$result_info = mysqli_query($con,"SELECT * FROM businfo WHERE BusName='$BusName'");
+$result_price = mysqli_query($con,"SELECT * FROM pricetable WHERE BusName='$BusName'");
 $result_carousel_start = mysqli_query($con,"SELECT * FROM imagin WHERE ID=1");
-$result_carousel = mysqli_query($con,"SELECT * FROM imagin WHERE Email='$email' AND ID >= 2");
+$result_carousel = mysqli_query($con,"SELECT * FROM imagin WHERE BusName='$BusName' AND ID >= 2");
 $result_cmt = mysqli_query($con,"SELECT * FROM cmt ORDER BY ID ASC");
 
 $img = mysqli_fetch_object($result_carousel_start);
@@ -127,8 +127,13 @@ $temp = 1;
 
 					<a class="nav-link" href="#">Liên hệ</a>
 
-					<div class="dropdown">							
-						<a class="nav-link" style="width:auto;" data-toggle="dropdown">Khánh hàng</a>
+					<div class="dropdown">	
+						<?php if(!isset($_COOKIE['username'])) { ?>				
+						<a class="nav-link" style="width:auto;" data-toggle="dropdown">Hàng Khách</a>
+						<?php } ?>
+						<?php if(isset($_COOKIE['username'])) { ?>				
+						<a class="nav-link" style="width:90px; height: 25px;" data-toggle="dropdown"><?php echo $_COOKIE['username']; ?></a>
+						<?php } ?>
 						<ul class="dropdown-menu">
 							<li>
 								<!-- Button to open the modal -->
@@ -151,59 +156,69 @@ $temp = 1;
 					<!-- The Modal (contains the Sign Up form) -->
 					<div id="signup" class="modalsignup" style="overflow: hidden;">
 						<div class="col-8" style="margin-right:auto; margin-left:auto;">	
-							<form class="modalsignup-content animatelogin">
+							<div class="modalsignup-content animatelogin">
 								<div class="container">
-									<div class="imgcontainer">
-										<img src="img/login.png" alt="Avatar" class="avatar">
-									</div>
+									<p>Suggestions: <span id="txtHint1"></span></p> 
+									<p>Suggestions: <span id="txtHint2"></span></p> 
 									<label><b>Email</b></label>
-									<input type="text" placeholder="Enter Email" name="email" required>
+									<input id="signupemail" type="email" placeholder="Enter Email" name="email" required>
+
+									<p style="color: red; padding-left: 20px;"><span id="SUemailError"></span></p>
+
+									<label><b>UserName</b></label>
+									<input id="signupuser" type="text" placeholder="Enter UserName" name="test" required">
+
+									<p style="color: red; padding-left: 20px;"><span id="SUuserError"></span></p>
 
 									<label><b>Password</b></label>
-									<input type="password" placeholder="Enter Password" name="psw" required>
+									<input id="signuppass" type="password" placeholder="Enter Password" name="psw" required>
+
+									<p style="color: red; padding-left: 20px;"><span id="SUpassError"></span></p>
 
 									<label><b>Repeat Password</b></label>
-									<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+									<input id="signuprepass" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+									<p style="color: red; padding-left: 20px;"><span id="SUrepassError"></span></p>
 
 									<div class="clearfix">
 										<button type="button" onclick="document.getElementById('signup').style.display='none'" class="cancelbtn">Cancel</button>
-										<button type="submit" class="signupbtn">Sign Up</button>
+
+										<button class="signupbtn" onclick="TestUserSignup(document.getElementById('signupemail').value, document.getElementById('signupuser').value, document.getElementById('signuppass').value, document.getElementById('signuprepass').value)">Sign Up</button>
 									</div>										
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
-
-
 
 					<!-- The Modal -->
 					<div id="login" class="modallogin" style="overflow: hidden;">
 						<!-- Modal Content -->
 						<div class="col-8" style="margin-right:auto; margin-left:auto;">							
-							<form class="modallogin-content animatelogin" action="check.php" method="POST">
+							<div class="modallogin-content animatelogin">
 								<div class="imgcontainer">
 									<img src="img/login.png" alt="Avatar" class="avatar">
 								</div>
 
 								<div class="container">
-									<div style="margin-bottom: 5px;">
-										<label style="margin: 0px;"><b>Username</b></label>
-										<input id="username" type="text" placeholder="Enter Username" name="user" required>
-									</div>
 
+									<div style="margin-bottom: 5px;">
+										<p>Suggestions: <span id="txtHint"></span></p> 
+										<label style="margin: 0px;"><b>Username</b></label>
+										<input id="username" type="email" placeholder="Enter Username" name="user">
+									</div>
+									<p style="color: red; padding-left: 20px;"><span id="UserError"></span></p> 
 									<div>
 										<label style="margin: 0px;"><b>Password</b></label>
-										<input id="password" type="password" placeholder="Enter Password" name="pass" required>
+										<input id="password" type="password" placeholder="Enter Password" name="pass">
 									</div>
-									<h1 id="erro"></h1>
-
-									<button id="submit" type="submit" onclick="showHint(username.value,password.value)" >Login</button>					
+									<p style="color: red; padding-left: 20px;"><span id="PassError"></span></p>
+									<button id="loginbutton" type="button" onclick="TestUser(document.getElementById('username').value,document.getElementById('password').value)" >Login</button>					
 								</div>
 								<div class="container clearfix" style="background-color:#f1f1f1">
 									<button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
 									<span class="psw">Forgot <a href="#" style="top: 6px;">password?</a></span>
 								</div>
-							</form>
+							</div>
 						</div>							
 					</div>
 
@@ -218,8 +233,8 @@ $temp = 1;
 
 	<!-- Page Content -->
 	<main class="bd-masthead" style="background-image: none; padding-bottom: 0px;">
-		<div class="span3">
-			<div class="well">
+		<div class="span3 ">
+			<div class="well ">
 
 				<div class="col-12">
 					<h2 class="text-info" align="middle">Thông tin xe khách</h2>
@@ -380,12 +395,13 @@ $temp = 1;
 				<form class="media" method="POST" action="delcmt.php">
 					<img class="media-left" src="img/login.png">
 					<div class="media-body" style="padding: 20px;">
+						<?php if(isset($_COOKIE['username'])) { ?>
 						<?php if($cmt->username === $_COOKIE['username']) { ?>
 						<div class="dropdown">
 							<a class="pull-right" data-toggle="dropdown">...</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a class="dropitem" onclick="document.getElementById('edit_cmt').style.display='block'" style="width:auto;">Chỉnh Sửa</a>
+									<a class="dropitem" onclick="document.getElementById('edit_cmt<?php echo $cmt->ID; ?>').style.display='block'" style="width:auto;">Chỉnh Sửa</a>
 								</li>
 								<li>									
 									<a class="dropitem" href='delcmt.php?del=<?php echo $cmt->ID; ?>' style="width:auto;">Delete</a>	
@@ -393,24 +409,21 @@ $temp = 1;
 							</ul>								
 						</div>
 						<?php } ?>
+						<?php } ?>
 						<h1 class="media-heading user_name"><?php echo $cmt->username; ?></h1>
 						<?php echo $cmt->content; ?>
-						<?php echo $cmt->ID; ?>
 					</div>
 				</form>
 				<!-- The Modal (contains the Edit comment form) -->
-				<div id="edit_cmt" class="modals_edit_cmt" style="overflow: hidden;">
+				<div id="edit_cmt<?php echo $cmt->ID; ?>" class="modals_edit_cmt" style="overflow: hidden;">
 					<div class="col-md-8" style="margin-right:auto; margin-left:auto; margin-top: 200px;">	
 						<form class="modals_edit_cmt-content animate_edit_cmt" method="POST" action="edit_cmt.php?IDcmt=<?php echo $cmt->ID; ?>">
 							<div class="container">
-								<textarea placeholder="<?php echo $cmt->ID ?>" class="pb-cmnt-textarea" name="edit_cmt_text"></textarea>
-								<?php if(!isset($_COOKIE['username'])) { ?>
-								<button class="btn btn-primary pull-right" type="button" style="width: 40%" onclick="document.getElementById('login').style.display='block'">Vui lòng đăng nhập để bình luận</button>
-								<?php }; ?>
+								<textarea placeholder="<?php echo $cmt->content ?>" class="pb-cmnt-textarea" name="edit_cmt_text"></textarea>
 								<?php if(isset($_COOKIE['username'])) { ?>					
 								<button type="submit" class="btn btn-primary pull-right" style="width: 50%">Bình Luận</button>
 								<?php } ?>
-								<button type="button" onclick="document.getElementById('edit_cmt').style.display='none'" class="cancelbtn">Cancel</button>		
+								<button type="button" onclick="document.getElementById('edit_cmt<?php echo $cmt->ID; ?>').style.display='none'" class="cancelbtn">Cancel</button>		
 							</div>
 						</form>
 					</div>
@@ -422,16 +435,16 @@ $temp = 1;
 	</div>
 	<!-- Comment Box -->
 
-<div class="col-md-12 col-md-offset-3">
-	<div class="panel panel-info">
-		<div class="panel-body">
-			<form class="form-inline" method="POST" action="cmt.php">
-				<textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="cmt"></textarea>
-				<?php if(!isset($_COOKIE['username'])) { ?>
-				<button class="btn btn-primary pull-right" type="button" style="width: 40%" onclick="document.getElementById('login').style.display='block'">Vui lòng đăng nhập để bình luận</button>
-				<?php }; ?>
-				<?php if(isset($_COOKIE['username'])) { ?>									
-				<button class="btn btn-primary pull-right" type="submit" style="width: 40%">Bình Luận</button>
+	<div class="col-md-12 col-md-offset-3">
+		<div class="panel panel-info">
+			<div class="panel-body">
+				<form class="form-inline" method="POST" action="cmt.php">
+					<textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="cmt"></textarea>
+					<?php if(!isset($_COOKIE['username'])) { ?>
+					<button class="btn btn-primary pull-right" type="button" style="width: 40%" onclick="document.getElementById('login').style.display='block'">Vui lòng đăng nhập để bình luận</button>
+					<?php }; ?>
+					<?php if(isset($_COOKIE['username'])) { ?>									
+					<button class="btn btn-primary pull-right" type="submit" style="width: 40%">Bình Luận</button>
 					<?php } ?>
 				</form>
 			</div>
@@ -439,21 +452,21 @@ $temp = 1;
 	</div>
 </div>	
 
-	<!--Footer-->
-	<footer class="container-fluid">
-		<div class="row" style="background-color: #26637f; color: white;">
-			<div class="col-md-12 div-center" style="font-weight: bold;">
-				<span style="padding: 5px;">Bùi Hữu Phước</span>
-				<span style="padding: 5px;">Văn Minh Tiến</span>
-				<span style="padding: 5px;">Huỳnh Hữu Lợi</span>
-			</div>
-			<div class="col-md-12 div-center" style="padding: 5px;">
-				© 2017 Copyright: &nbsp;<a style="color: white;" href="http://www.uit.edu.vn"> uit.edu.vn </a>
-			</div>
+<!--Footer-->
+<footer class="container-fluid">
+	<div class="row" style="background-color: #26637f; color: white;">
+		<div class="col-md-12 div-center" style="font-weight: bold;">
+			<span style="padding: 5px;">Bùi Hữu Phước</span>
+			<span style="padding: 5px;">Văn Minh Tiến</span>
+			<span style="padding: 5px;">Huỳnh Hữu Lợi</span>
 		</div>
-	</footer>
-	<!--Copyright-->
-	<!--/.Footer-->
+		<div class="col-md-12 div-center" style="padding: 5px;">
+			© 2017 Copyright: &nbsp;<a style="color: white;" href="http://www.uit.edu.vn"> uit.edu.vn </a>
+		</div>
+	</div>
+</footer>
+<!--Copyright-->
+<!--/.Footer-->
 
 <!-- Bootstrap core JavaScript
 	================================================== -->
@@ -471,14 +484,12 @@ $temp = 1;
 	<script type="text/javascript" src="js/pricetable.js"></script>
 	
 	<!-- Login Form -->
-	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" src="js/cancelButtonSignUp.js"></script>
 	<script type="text/javascript" src="js/logout.js"></script>
 	<script type="text/javascript" src="js/signup.js"></script>
-
+	<script type="text/javascript" src="js/login.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
 
 </body>
 </html>
-?>
