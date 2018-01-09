@@ -1,3 +1,4 @@
+
 function TestUser(str,str1) {
   var xhttp;
   if (str.length == 0) { 
@@ -33,5 +34,4 @@ function TestUser(str,str1) {
       xhttp.open("GET", "login.php?UserName="+str+"&PassWord="+str1, true);
       xhttp.send();   
   }
-
 }

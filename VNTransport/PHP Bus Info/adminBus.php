@@ -1,9 +1,9 @@
 <?php 
-include 'Connect.php';
+include 'connect.php';
 
 $BusName = 'hoang long';
 $result_info = mysqli_query($con,"SELECT * FROM businfo WHERE BusName='$BusName'");
-$result_price = mysqli_query($con,"SELECT * FROM pricetable WHERE BusName='$BusName'");
+
 $result_carousel_start = mysqli_query($con,"SELECT * FROM imagin WHERE ID=1");
 $result_carousel = mysqli_query($con,"SELECT * FROM imagin WHERE BusName='$BusName' AND ID >= 2");
 $result_cmt = mysqli_query($con,"SELECT * FROM cmt ORDER BY ID ASC");
@@ -240,9 +240,6 @@ $test;
 			<li class="nav-item">
 				<a class="nav-link" data-toggle="tab" href="#panel3" role="tab"><h4>Thêm thông tin chuyến đi</h4></a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#panel4" role="tab"><h4>Comment</h4></a>
-			</li>
 		</ul>
 
 		<!-- Tab panels -->
@@ -252,30 +249,30 @@ $test;
 				<br>
 				<table class="table table-hover">
 					<tbody>
-						<form method="POST" action="">
+						<form method="POST" action="AddBusInfo.php">
 							<tr>
 								<span>Hãng xe: </span>
-								<input id="name_hx" type="text" name="name_hx" placeholder="Nhập tên hãng xe" required/>
+								<input type="text" name="name_bus" placeholder="Nhập tên hãng xe" required/>
 							</tr>
 							<tr>
 								<span>Chủ Xe: </span>
-								<input id="name_cx" type="text" name="name_cx" placeholder="Nhập tên chủ xe" required />
+								<input type="text" name="name_owner" placeholder="Nhập tên chủ xe" required />
 							</tr>
 							<tr>
 								<span>Email: </span>
-								<input id="email_hx" type="email" name="email" placeholder="Email hãng xe" required />
+								<input type="email" name="email_bus" placeholder="Email hãng xe" required />
 							</tr>
 							<tr>
-								<span>Điện Thoại: </span>
-								<input id="phone_hx" type="tel" name="phone" placeholder="Điện Thoại" required />
+								<span>Điện Thoại: Gồm 10 số </span>
+								<input type="tel" name="service_bus" placeholder="Điện Thoại" required pattern="[0-9]{10}"/>
 							</tr>
 							<tr>
 								<span>Giới Thiệu :</span>
-								<textarea id="info_hx" name="message" placeholder="Thông tin nhà xe" required></textarea>
+								<textarea name="info_bus" placeholder="Thông tin nhà xe" required></textarea>
 							</tr>
 							<tr>
 								<div class="div-center">
-								<input type="submit" class="button" value="Đăng kí" />
+								<button type="submit">Đăng kí</button>
 							</tr>	
 							</form>
 						</tbody>
@@ -288,32 +285,37 @@ $test;
 					<br>
 					<table class="table table-hover">
 						<tbody>
-							<form method="POST" action="">
-								<input type="search" id="mySearch" placeholder="Nhập tên hãng xe">
-								<button onclick="myFunction()">Try it</button>
-							</form>
-							<?php  ?>
-							<form>
-								<tr>
-								<span>Hãng xe: </span>
-								<input id="name_hx" type="text" name="name_hx" placeholder="Nhập tên hãng xe" required/>
+							<div>
+								<input id="SearchBus" type="text" placeholder="Nhập tên hãng xe" name="edit_name">
+								<p style="color: red; padding-left: 20px;"><span id="SearchError"></span></p>
+								<button onclick="SearchBus(document.getElementById('SearchBus').value)">Tìm</button>
+							</div>
+							<p>Suggestions: <span id="txtHint3"></span></p> 
+							<p>Suggestions: <span id="txtHint4"></span></p>
+							<p>Suggestions: <span id="txtHint5"></span></p>
+							<form method="POST" action="POSTEditBusInfo.php">
+							<tr>
+								<span>Hãng xe: <p style="color: red; padding-left: 20px;"><span id="Bus_Name"></span></p></span>
+								<input id="editBusName" type="text" name="name_bus" placeholder="Nhập tên hãng xe" required/>
+							</tr>
+
+							<tr>
+								<span>Chủ Xe: <p style="color: red; padding-left: 20px;"><span id="Ownwe_Name"></span></p></span>
+								<input id="editOwner" type="text" name="name_owner" placeholder="Nhập tên chủ xe" required />
 							</tr>
 							<tr>
-								<span>Chủ Xe: </span>
-								<input id="name_cx" type="text" name="name_cx" placeholder="Nhập tên chủ xe" required />
+								<span>Email: <p style="color: red; padding-left: 20px;"><span id="Bus_Email"></span></p></span>
+								<input id="editEmail" type="email" name="email_bus" placeholder="Email hãng xe" required />
 							</tr>
 							<tr>
-								<span>Email: </span>
-								<input id="email_hx" type="email" name="email" placeholder="Email hãng xe" required />
+								<span>Dịch Vụ: <p style="color: red; padding-left: 20px;"><span id="Bus_Service"></span></p></span>
+								<input id="editService" type="text" name="service_bus" placeholder="Dịch Vụ" required />
 							</tr>
 							<tr>
-								<span>Điện Thoại: </span>
-								<input id="phone_hx" type="tel" name="phone" placeholder="Điện Thoại" required />
+								<span>Giới Thiệu: <p style="color: red; padding-left: 20px;"><span id="Bus_Info"></span></p></span>
+								<textarea id="editInfo" name="info_bus" placeholder="Thông tin nhà xe" required></textarea>
 							</tr>
-							<tr>
-								<span>Giới Thiệu :</span>
-								<textarea id="info_hx" name="message" placeholder="Thông tin nhà xe" required></textarea>
-							</tr>
+								<button type="submit">Cập nhật</button>
 							</form>
 						</tbody>
 					</table>
@@ -326,20 +328,40 @@ $test;
 					<br>
 					<table class="table table-hover">
 						<tbody>	
+							<form method="POST" action="addTrip.php">
+
+							<tr>
+								<span>Hãng xe: </span>
+								<input id="Name_Bus_Trip" type="text" name="name_bus" placeholder="Nhập tên hãng xe" required/>
+								<p style="color: red; padding-left: 20px;"><span id="TripBusError"></span></p>
+							</tr>
+							<tr>
+								<span>Tuyến Đường: </span>
+								<input id="Trip_Name" type="text" name="name_trip" placeholder="Nhập Tuyến Đường" required />
+								<p style="color: red; padding-left: 20px;"><span id="TripError"></span></p>
+							</tr>
+							<tr>
+								<span>Loại xe: </span>
+								<input type="text" name="bus_type" placeholder="Nhập Loại xe" required />
+								<p style="color: red; padding-left: 20px;"><span></span></p>
+							</tr>
+							<tr>
+								<span>Số chuyến: </span>
+								<input type="number" name="trip_number" placeholder="Nhập Số chuyến/ngày" min="0" required />
+								<p style="color: red; padding-left: 20px;"><span></span></p>
+							</tr>
+							<tr>
+								<span>Giá vé: </span>
+								<input type="number" name="money" placeholder="Nhập Giá vé" min="0" required>
+							</tr>
+							<p style="color: red; padding-left: 20px;"><span id="NoTrip"></span></p>
+								<button class="col-md-6" type="submit">Thêm</button>
+							</form>
+							<button class="col-md-6" onclick="delTrip(document.getElementById('Name_Bus_Trip').value, document.getElementById('Trip_Name').value)">Xóa</button>
 						</tbody>
 					</table>
 				</div>
 				<!--/.Panel 3-->
-
-				<!--Panel 4-->
-				<div class="tab-pane fade" id="panel4" role="tabpanel">
-					<br>
-					<table class="table table-hover">
-						<tbody>	
-						</tbody>
-					</table>
-				</div>
-				<!--/.Panel 4-->
 			</div>
 		</div>
 
@@ -381,7 +403,7 @@ $test;
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/test.js"></script>
-
+	<script type="text/javascript" src="js/FindBusInfo.js"></script>
+	<script type="text/javascript" src="js/delTrip.js"></script>
 </body>
 </html>

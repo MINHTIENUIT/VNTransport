@@ -6,7 +6,7 @@ $password = $_REQUEST["password"];
 $repass = $_REQUEST["repassword"];
 
 
-/*function test_input($data) {
+function test_input($data) {
 	//remove whitespaces from both sides of a data
 	$data = trim($data);
 	//remove the backslash
@@ -14,7 +14,7 @@ $repass = $_REQUEST["repassword"];
 	//converts some predefined characters to HTML entities
 	$data = htmlspecialchars($data);
 	return $data;
-}*/
+}
 
 function test_username($userN){
 	//$userN = test_input($userN);

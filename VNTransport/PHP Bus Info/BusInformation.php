@@ -1,5 +1,5 @@
 <?php 
-include 'Connect.php';
+include 'connect.php';
 $BusName = 'hoang long';
 $result_info = mysqli_query($con,"SELECT * FROM businfo WHERE BusName='$BusName'");
 $result_price = mysqli_query($con,"SELECT * FROM pricetable WHERE BusName='$BusName'");
@@ -356,7 +356,6 @@ $temp = 1;
 						</thead>
 						<?php while($product = mysqli_fetch_object($result_price)){ ?>
 						<tbody>
-							
 							<tr>
 								<td><?php echo $product->ID; ?></td>
 								<td><?php echo $product->Route; ?></td>
@@ -365,7 +364,7 @@ $temp = 1;
 								<td><?php echo $product->Price; ?>đ</td>
 								<td>			
 									<button type="button" class="btn btn-dark-green waves-effect waves-light" style="border-radius: 8px;" id="date" name="date">
-										Chọn ngày
+										Tra Cứu
 									</button>			
 								</td>
 							</tr>
@@ -400,9 +399,7 @@ $temp = 1;
 						<div class="dropdown">
 							<a class="pull-right" data-toggle="dropdown">...</a>
 							<ul class="dropdown-menu">
-								<li>
-									<a class="dropitem" onclick="document.getElementById('edit_cmt<?php echo $cmt->ID; ?>').style.display='block'" style="width:auto;">Chỉnh Sửa</a>
-								</li>
+
 								<li>									
 									<a class="dropitem" href='delcmt.php?del=<?php echo $cmt->ID; ?>' style="width:auto;">Delete</a>	
 								</li>
@@ -414,20 +411,6 @@ $temp = 1;
 						<?php echo $cmt->content; ?>
 					</div>
 				</form>
-				<!-- The Modal (contains the Edit comment form) -->
-				<div id="edit_cmt<?php echo $cmt->ID; ?>" class="modals_edit_cmt" style="overflow: hidden;">
-					<div class="col-md-8" style="margin-right:auto; margin-left:auto; margin-top: 200px;">	
-						<form class="modals_edit_cmt-content animate_edit_cmt" method="POST" action="edit_cmt.php?IDcmt=<?php echo $cmt->ID; ?>">
-							<div class="container">
-								<textarea placeholder="<?php echo $cmt->content ?>" class="pb-cmnt-textarea" name="edit_cmt_text"></textarea>
-								<?php if(isset($_COOKIE['username'])) { ?>					
-								<button type="submit" class="btn btn-primary pull-right" style="width: 50%">Bình Luận</button>
-								<?php } ?>
-								<button type="button" onclick="document.getElementById('edit_cmt<?php echo $cmt->ID; ?>').style.display='none'" class="cancelbtn">Cancel</button>		
-							</div>
-						</form>
-					</div>
-				</div>
 				<?php } ?>
 			</div>
 
