@@ -61,7 +61,7 @@
 
 					<!--Body-->
 					@if (isset($nhaxe))
-					<form action="" method="post" enctype="multipart/form-data">
+					<form action="{{ route('chinh_sua_nha_xe', ['id'=>$nhaxe->id]) }}" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="col-md-12 col-md-offset-2 row wow fadeInUp">	
 							<div class="col-md-6">

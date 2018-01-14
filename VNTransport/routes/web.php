@@ -65,3 +65,57 @@ Route::get('dang_ki_xe', function(Request $req){
 })->name('dang_ki_xe')->middleware('auth');
 
 Route::post('insert_xe/{id}',"Controller@dangKiXe")->name('insert_xe');
+
+Route::post('chinh_sua_nha_xe', function(Request $req){
+	$id = $req->id;
+	$hangXe = $req->HangXe;
+	$chuXe = $req->ChuXe;
+	$diaChi = $req->DiaChi;
+	$dienThoai = $req->Phone;
+	$thongTin = $req->Info;
+	$email = $req->Email;
+
+	if($req->hasFile('imgFile')) 
+	{
+		$file = $req->file('imgFile');
+		$ext = $file->getClientOriginalExtension();
+		$fileName = $file->getClientOriginalName();
+		if( $ext == 'png' || $ext == 'jpg')
+		{
+			$file->move('imgs', $fileName);
+		} else 
+		{
+			return view('pages.my_account', [
+				'error'     =>  'Vui lòng chọn file ảnh (.png, .jpg)',
+				'HangXe'    =>  $hangXe, 
+				'ChuXe'     =>  $chuXe, 
+				'DiaChi'    =>  $diaChi,
+				'Phone'     =>  $dienThoai, 
+				'Info'      =>  $thongTin,
+				'Email'     =>  $email]);
+		}
+	}
+	else
+	{
+		return view('pages.my_account', [
+			'error'     =>  'Không tìm thấy file này',
+			'HangXe'    =>  $hangXe, 
+			'ChuXe'     =>  $chuXe, 
+			'DiaChi'    =>  $diaChi,
+			'Phone'     =>  $dienThoai, 
+			'Info'      =>  $thongTin,
+			'Email'     =>  $email]);
+	}
+
+	DB::table('nha_xe')->where('id', $id)->update([
+		'ten_nha_xe' 	=>  $hangXe,
+		'ten_chu_xe' 	=> 	$chuXe,
+		'email'			=>	$email,
+		'dien_thoai'	=> 	$dienThoai,
+		'thong_tin'		=> 	$thongTin,
+		'dia_chi'		=> 	$diaChi,
+		'link_anh'		=> 	'/imgs/'.$fileName
+	]);
+
+	return redirect()->back();
+})->name('chinh_sua_nha_xe')->middleware('auth');
