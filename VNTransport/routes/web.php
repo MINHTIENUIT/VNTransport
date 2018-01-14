@@ -44,7 +44,7 @@ Route::get('my_account', function(){
 	$nhaxe = NhaXe::find($user->id);
 	if($nhaxe)
 	{
-		$listxe = Xe::find($nhaxe->id)
+		$listxe = Xe::where('nha_xe_id', $nhaxe->id)
 		->join('dia_diem as noidi','noidi.id','=','xe.noi_di_id')
 		->join('dia_diem as noiden','noiden.id','=','xe.noi_den_id')
 		->select('noidi.tinh_tp as noidi_tinh_tp',

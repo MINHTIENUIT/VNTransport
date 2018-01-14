@@ -15,22 +15,19 @@ class DatabaseSeeder extends Seeder
     	DB::table('users')->insert([
     		'name' => 'Vũ Văn Tuyến',
     		'email' => 'vvt@gmail.com',
-    		'password' => '00000000',
-    		'remember_token' => '00000000'
+    		'password' =>  bcrypt('00000000')
     	]);
 
     	DB::table('users')->insert([
     		'name' => 'Lê Thanh Thủy',
     		'email' => 'ThanhThuy@gmail.com',
-    		'password' => '00000000',
-    		'remember_token' => '00000000'
+    		'password' => bcrypt('00000000')
     	]);
 
     	DB::table('users')->insert([
     		'name' => 'Nguyễn Phương Trang',
     		'email' => 'phuongtrang@gmail.com',
-    		'password' => '00000000',
-    		'remember_token' => '00000000'
+    		'password' =>  bcrypt('00000000')
     	]);
 
     	DB::table('nha_xe')->insert([
