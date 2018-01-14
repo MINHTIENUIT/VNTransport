@@ -200,4 +200,34 @@ class Controller extends BaseController
 			echo "Error: Thông tin lỗi, vui lòng back và nhập lại";
 		}
 	}
+
+	public function updateXe(Request $req){
+		try{
+			$noidi = $request->noi_di;
+			$noiden = $request->noi_den;
+			$noidi = Controller::insertDiaDiem($noidi);
+			$noiden = Controller::insertDiaDiem($noiden);
+
+			$xe = new Xe();				
+			$xe->so_tuyen_di = $request->so_tuyen_di;		
+			$xe->gia = $request->gia;
+			$xe->dich_vu = $request->dich_vu;
+			if ($noidi == null || $noiden == null){
+				echo "Sai Cú Pháp Địa Điểm";			
+			}else{
+				$xe->noi_di_id = $noidi;
+				$xe->noi_den_id = $noiden;
+				DB::table('xe')->where('xe.id',$req->id)->update(['so_tuyen_di' => $xe->so_tuyen_di,
+					'gia' => $xe->gia,
+					'noi_di_id' => $noidi,
+					'noi_den_id' => $noiden,
+					'dich_vu' => $xe->dich_vu]);
+
+				echo "đăng kí thành công";	
+				return redirect()->route('my_account');
+			}		
+		}catch(Exception $e){
+			echo "Error: Thông tin lỗi, vui lòng back và nhập lại";
+		}
+	}
 }

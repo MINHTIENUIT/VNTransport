@@ -183,9 +183,9 @@
 
 								<td class="text-center"><h5>{{$value->so_tuyen_di}} tuyến/ngày</h5></td>     
 
-								<td class="text-center"><a href="" class="btn btn-primary">Chỉnh sửa</a></td> 
+								<td class="text-center"><a href="{{route('update_xe_view',['value' => $value->id])}}" class="btn btn-primary">Chỉnh sửa</a></td> 
 
-								<td class="text-center"><a href="" class="btn btn-primary">Xóa</a></td>              
+								<td class="text-center"><a href="{{route('xoa_xe',['id' => $value->id])}}" class="btn btn-primary">Xóa</a></td>              
 							</tr>                    
 							@endforeach
 						</tbody>

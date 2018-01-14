@@ -47,7 +47,7 @@ Route::get('my_account', function(){
 		$listxe = Xe::where('nha_xe_id', $nhaxe->id)
 		->join('dia_diem as noidi','noidi.id','=','xe.noi_di_id')
 		->join('dia_diem as noiden','noiden.id','=','xe.noi_den_id')
-		->select('noidi.tinh_tp as noidi_tinh_tp',
+		->select('xe.id as id','noidi.tinh_tp as noidi_tinh_tp',
 			'noiden.tinh_tp as noiden_tinh_tp',
 			'noidi.quan_huyen as noidi_quan_huyen',
 			'noiden.quan_huyen as noiden_quan_huyen',
@@ -119,3 +119,30 @@ Route::post('chinh_sua_nha_xe', function(Request $req){
 
 	return redirect()->back();
 })->name('chinh_sua_nha_xe')->middleware('auth');
+
+Route::get('xoa_xe',function(Request $req){	
+	$id = $req->id;
+	echo $id;
+	Xe::where('id','=',$id)->delete();
+
+	//return redirect()->route('my_account');
+})->name('xoa_xe');
+
+Route::get('update', function(Request $req){
+	$user = Auth::user();	
+	$nhaxe = NhaXe::find($user->id);
+	$id = $req->value;	
+	$xe = Xe::where('xe.id', $id)
+	->join('dia_diem as noidi','noidi.id','=','xe.noi_di_id')
+	->join('dia_diem as noiden','noiden.id','=','xe.noi_den_id')
+	->select('xe.id as id','noidi.tinh_tp as noidi_tinh_tp',
+		'noiden.tinh_tp as noiden_tinh_tp',
+		'noidi.quan_huyen as noidi_quan_huyen',
+		'noiden.quan_huyen as noiden_quan_huyen',
+		'xe.dich_vu as dich_vu',
+		'xe.gia as gia_ve',
+		'xe.so_tuyen_di as so_tuyen_di')->first();
+		return view('pages.dang_ki_xe', ['user'=> $user, 'nhaxe' => $nhaxe, 'xe'=>$xe]);	
+})->name('update_xe_view');
+
+Route::get('update_xe',"Controller@updateXe")->name("update_xe");
